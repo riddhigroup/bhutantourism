@@ -3,216 +3,2472 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Explore Bhutan, Sikkim, Darjeeling, Kalimpong and Dooars from Jaigaon with trusted local travel support.">
-<title>Himalayan Gateway | Bhutan • Sikkim • Darjeeling • Dooars</title>
+
+<meta name="description" content="Himalayan Gateway - Plan Bhutan, Dooars, Sikkim, Darjeeling and Kalimpong trips from Jaigaon with local travel support, custom itineraries, hotels and vehicles.">
+<meta name="keywords" content="Bhutan tour from Jaigaon, Bhutan travel, Jaigaon travel agent, Dooars tour, Samsing, Rocky Island, Jhalong, Bindu, Sikkim tour, Darjeeling tour">
+<meta name="author" content="Himalayan Gateway">
+
+<meta property="og:title" content="Himalayan Gateway | Bhutan & Eastern Himalaya">
+<meta property="og:description" content="Your local gateway to Bhutan, Dooars, Sikkim and Darjeeling.">
+<meta property="og:type" content="website">
+
+<title>Himalayan Gateway | Bhutan • Dooars • Sikkim • Darjeeling</title>
+
 <style>
 :root{
-  --bg:#07131b;--bg2:#0d2029;--card:rgba(255,255,255,.08);--text:#f7fbfc;
-  --muted:#b8c9ce;--accent:#d8b36a;--accent2:#8fd3c7;--line:rgba(255,255,255,.13);
+  --bg:#061219;
+  --bg2:#0b2028;
+  --card:rgba(255,255,255,.075);
+  --card2:rgba(255,255,255,.045);
+  --text:#f8fbfc;
+  --muted:#aebfc4;
+  --gold:#d8b36a;
+  --gold2:#f0d495;
+  --green:#8fd3c7;
+  --line:rgba(255,255,255,.12);
+  --success:#25D366;
+  --shadow:0 20px 60px rgba(0,0,0,.25);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-a{text-decoration:none;color:inherit}
-.container{width:min(1160px,92%);margin:auto}
-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,19,27,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:22px;font-weight:800;letter-spacing:.4px}.logo span{color:var(--accent)}
-.navlinks{display:flex;gap:25px;align-items:center;font-size:14px;color:#d9e5e8}
-.navlinks a:hover{color:var(--accent)}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:12px;border:1px solid var(--line);font-weight:700;cursor:pointer;transition:.25s}
-.btn-primary{background:var(--accent);color:#111;border-color:var(--accent)}
-.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.05)}
-.btn-outline:hover{background:rgba(255,255,255,.08)}
-.hero{min-height:760px;padding:150px 0 80px;display:flex;align-items:center;position:relative;overflow:hidden;
-background:linear-gradient(180deg,rgba(4,12,18,.2),rgba(7,19,27,.96)),url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1800&q=85') center/cover}
-.hero:after{content:"";position:absolute;inset:auto -10% -160px;height:300px;background:var(--bg);border-radius:50% 50% 0 0/100% 100% 0 0}
-.hero-content{max-width:780px;position:relative;z-index:2}
-.badge{display:inline-block;border:1px solid rgba(216,179,106,.45);background:rgba(216,179,106,.1);color:#f1d89e;padding:8px 13px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
-h1{font-size:clamp(42px,7vw,78px);line-height:1.02;margin:20px 0}
-.hero p{font-size:19px;color:#d3e0e4;max-width:670px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.stats{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
-.stat strong{font-size:25px;display:block;color:var(--accent)}.stat small{color:var(--muted)}
-section{padding:90px 0}
-.section-head{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:35px}
-.section-head h2{font-size:38px;line-height:1.1}.section-head p{color:var(--muted);max-width:550px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.25s}
-.card:hover{transform:translateY(-5px);border-color:rgba(216,179,106,.45)}
-.card-img{height:190px;background-size:cover;background-position:center}
-.card-body{padding:20px}.card-body h3{font-size:21px;margin-bottom:7px}.card-body p{color:var(--muted);font-size:14px}
-.tag{display:inline-block;color:#bfe5de;font-size:12px;margin-top:12px}
-.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.package{padding:25px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035))}
-.package h3{font-size:23px}.package .price{font-size:28px;color:var(--accent);font-weight:800;margin:10px 0}.package ul{list-style:none;color:var(--muted);font-size:14px;margin:15px 0}.package li{margin:7px 0}.package li:before{content:"✓ ";color:var(--accent2)}
-.feature{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
-.feature-img{height:470px;border-radius:25px;background:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85') center/cover}
-.feature ul{list-style:none;margin-top:22px}.feature li{padding:12px 0;border-bottom:1px solid var(--line);color:var(--muted)}.feature li strong{color:white}
-.form-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:25px}
-.info-box,.form-box{border:1px solid var(--line);background:var(--card);border-radius:24px;padding:30px}
-.info-box{background:linear-gradient(145deg,rgba(216,179,106,.13),rgba(255,255,255,.04))}
-.info-box h2{font-size:38px;margin:15px 0}.info-box p{color:var(--muted)}
-form{display:grid;grid-template-columns:1fr 1fr;gap:15px}.full{grid-column:1/-1}
-label{font-size:12px;color:#c9d7da;margin-bottom:6px;display:block}
-input,select,textarea{width:100%;background:rgba(0,0,0,.22);border:1px solid var(--line);color:white;padding:13px;border-radius:11px;outline:none}
-select option{color:#111}textarea{min-height:110px;resize:vertical}
-.notice{font-size:12px;color:#9eb0b5;margin-top:10px}
-footer{padding:35px 0;border-top:1px solid var(--line);color:var(--muted)}
-.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.mobile{display:none}
-.whatsapp{position:fixed;right:20px;bottom:20px;z-index:90;background:#25D366;color:#07131b;border-radius:50%;width:58px;height:58px;display:flex;align-items:center;justify-content:center;font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.packages,.feature,.form-wrap{grid-template-columns:1fr}.feature-img{height:350px}.navlinks{display:none}.mobile{display:block}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{min-height:700px;padding-top:125px}h1{font-size:48px}.hero p{font-size:16px}.stats{gap:18px}section{padding:65px 0}.section-head{display:block}.section-head h2{font-size:31px;margin-bottom:12px}form{grid-template-columns:1fr}.full{grid-column:auto}.nav{height:65px}}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(143,211,199,.06),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(216,179,106,.06),transparent 28%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+body.menu-open{
+  overflow:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  max-width:100%;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  background:rgba(6,18,25,.78);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  font-size:14px;
+  color:#d8e4e7;
+}
+
+.navlinks a{
+  transition:.25s;
+}
+
+.navlinks a:hover{
+  color:var(--gold);
+}
+
+.nav-cta{
+  padding:10px 16px!important;
+}
+
+.menu-btn{
+  display:none;
+  background:none;
+  border:1px solid var(--line);
+  color:white;
+  border-radius:10px;
+  padding:8px 11px;
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:13px 20px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  font-weight:800;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  background:var(--gold);
+  color:#111;
+  border-color:var(--gold);
+}
+
+.btn-primary:hover{
+  filter:brightness(1.07);
+}
+
+.btn-outline{
+  background:rgba(255,255,255,.04);
+  color:white;
+}
+
+.btn-outline:hover{
+  background:rgba(255,255,255,.1);
+}
+
+.btn-green{
+  background:var(--success);
+  color:#07131b;
+  border-color:var(--success);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:800px;
+  padding:155px 0 100px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(90deg,rgba(3,11,16,.94) 0%,rgba(3,11,16,.72) 48%,rgba(3,11,16,.35) 100%),
+    linear-gradient(180deg,rgba(4,12,18,.15),rgba(6,18,25,.98)),
+    url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2000&q=90')
+    center/cover;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  bottom:-150px;
+  left:-10%;
+  width:120%;
+  height:250px;
+  background:var(--bg);
+  border-radius:50% 50% 0 0/100% 100% 0 0;
+}
+
+.hero-content{
+  max-width:820px;
+  position:relative;
+  z-index:2;
+}
+
+.badge{
+  display:inline-block;
+  border:1px solid rgba(216,179,106,.42);
+  background:rgba(216,179,106,.09);
+  color:var(--gold2);
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:clamp(45px,7vw,82px);
+  line-height:1;
+  margin:22px 0;
+  letter-spacing:-2px;
+}
+
+.hero h1 span{
+  color:var(--gold);
+}
+
+.hero p{
+  font-size:19px;
+  color:#d4e0e4;
+  max-width:720px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.stats{
+  display:flex;
+  gap:40px;
+  margin-top:40px;
+  flex-wrap:wrap;
+}
+
+.stat strong{
+  display:block;
+  font-size:26px;
+  color:var(--gold);
+}
+
+.stat small{
+  color:var(--muted);
+}
+
+/* ================= GENERAL ================= */
+
+section{
+  padding:95px 0;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  margin-bottom:38px;
+}
+
+.section-head h2{
+  font-size:40px;
+  line-height:1.1;
+}
+
+.section-head p{
+  color:var(--muted);
+  max-width:580px;
+}
+
+.kicker{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+/* ================= DESTINATIONS ================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  transition:.3s;
+  box-shadow:0 8px 30px rgba(0,0,0,.12);
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(216,179,106,.45);
+  box-shadow:var(--shadow);
+}
+
+.card-img{
+  height:210px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+
+.card-img:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent 45%,rgba(0,0,0,.45));
+}
+
+.card-body{
+  padding:21px;
+}
+
+.card-body h3{
+  font-size:21px;
+  margin-bottom:6px;
+}
+
+.card-body p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.tag{
+  display:inline-block;
+  margin-top:13px;
+  color:#bfe5de;
+  font-size:12px;
+}
+
+/* ================= BHUTAN FEATURE ================= */
+
+.bhutan-feature{
+  background:
+    linear-gradient(100deg,rgba(216,179,106,.08),rgba(255,255,255,.02));
+}
+
+.feature{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:45px;
+  align-items:center;
+}
+
+.feature-img{
+  min-height:520px;
+  border-radius:28px;
+  background:
+    linear-gradient(180deg,transparent 50%,rgba(0,0,0,.45)),
+    url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1400&q=90')
+    center/cover;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+
+.feature h2{
+  font-size:46px;
+  line-height:1.1;
+  margin:15px 0;
+}
+
+.feature p{
+  color:var(--muted);
+}
+
+.feature-list{
+  list-style:none;
+  margin-top:25px;
+}
+
+.feature-list li{
+  padding:13px 0;
+  border-bottom:1px solid var(--line);
+  color:var(--muted);
+}
+
+.feature-list strong{
+  color:white;
+}
+
+.destination-mini{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:25px;
+}
+
+.destination-mini span{
+  border:1px solid var(--line);
+  padding:7px 11px;
+  border-radius:999px;
+  font-size:12px;
+  color:#dce8ea;
+  background:rgba(255,255,255,.04);
+}
+
+/* ================= DOOARS ================= */
+
+.dooars-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.place{
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--card2);
+  transition:.25s;
+}
+
+.place:hover{
+  transform:translateY(-4px);
+  border-color:rgba(143,211,199,.4);
+}
+
+.place-icon{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.place h3{
+  font-size:18px;
+}
+
+.place p{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:5px;
+}
+
+/* ================= PACKAGES ================= */
+
+.packages{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.package{
+  padding:27px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
+  position:relative;
+  overflow:hidden;
+}
+
+.package.featured{
+  border-color:rgba(216,179,106,.5);
+}
+
+.package-badge{
+  position:absolute;
+  right:18px;
+  top:18px;
+  background:rgba(216,179,106,.13);
+  color:var(--gold2);
+  border:1px solid rgba(216,179,106,.3);
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:800;
+}
+
+.package h3{
+  font-size:24px;
+}
+
+.package .price{
+  font-size:27px;
+  color:var(--gold);
+  font-weight:900;
+  margin:10px 0;
+}
+
+.package .sub{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.package ul{
+  list-style:none;
+  color:var(--muted);
+  font-size:14px;
+  margin:18px 0 23px;
+}
+
+.package li{
+  margin:8px 0;
+}
+
+.package li:before{
+  content:"✓ ";
+  color:var(--green);
+  font-weight:bold;
+}
+
+/* ================= SERVICES ================= */
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:17px;
+}
+
+.service{
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:var(--card);
+}
+
+.service-icon{
+  font-size:31px;
+  margin-bottom:12px;
+}
+
+.service h3{
+  font-size:18px;
+  margin-bottom:7px;
+}
+
+.service p{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* ================= PARTNER ================= */
+
+.partner{
+  border:1px solid rgba(216,179,106,.25);
+  border-radius:28px;
+  padding:45px;
+  background:
+    linear-gradient(120deg,rgba(216,179,106,.11),rgba(143,211,199,.04));
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:35px;
+  align-items:center;
+}
+
+.partner h2{
+  font-size:39px;
+  line-height:1.1;
+  margin:13px 0;
+}
+
+.partner p{
+  color:var(--muted);
+}
+
+.partner-box{
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(0,0,0,.16);
+}
+
+.partner-box strong{
+  color:var(--gold);
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:190px;
+  gap:13px;
+}
+
+.gallery-item{
+  border-radius:17px;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
+  border:1px solid var(--line);
+  transition:.3s;
+}
+
+.gallery-item:hover{
+  transform:scale(1.015);
+}
+
+.gallery-item.big{
+  grid-column:span 2;
+  grid-row:span 2;
+}
+
+/* ================= WHY US ================= */
+
+.why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.why-card{
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:var(--card);
+}
+
+.why-number{
+  color:var(--gold);
+  font-size:13px;
+  font-weight:900;
+}
+
+.why-card h3{
+  margin:7px 0;
+  font-size:21px;
+}
+
+.why-card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* ================= FORM ================= */
+
+.form-wrap{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:25px;
+}
+
+.info-box,
+.form-box{
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:25px;
+  padding:31px;
+}
+
+.info-box{
+  background:
+    linear-gradient(145deg,rgba(216,179,106,.13),rgba(255,255,255,.035));
+}
+
+.info-box h2{
+  font-size:40px;
+  line-height:1.1;
+  margin:15px 0;
+}
+
+.info-box p{
+  color:var(--muted);
+}
+
+.contact-lines{
+  margin-top:27px;
+}
+
+.contact-lines div{
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+
+form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+label{
+  display:block;
+  font-size:12px;
+  color:#c9d7da;
+  margin-bottom:6px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  background:rgba(0,0,0,.22);
+  border:1px solid var(--line);
+  color:white;
+  padding:13px;
+  border-radius:11px;
+  outline:none;
+  font-family:inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:rgba(216,179,106,.7);
+}
+
+select option{
+  color:#111;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.notice{
+  font-size:11px;
+  color:#91a5aa;
+  margin-top:10px;
+}
+
+/* ================= FAQ ================= */
+
+.faq{
+  max-width:850px;
+  margin:auto;
+}
+
+details{
+  border:1px solid var(--line);
+  border-radius:15px;
+  margin-bottom:11px;
+  background:var(--card);
+  overflow:hidden;
+}
+
+summary{
+  cursor:pointer;
+  padding:18px 20px;
+  font-weight:800;
+}
+
+details p{
+  padding:0 20px 20px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  padding:45px 0;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:30px;
+}
+
+.footer-title{
+  color:white;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.footer-links{
+  list-style:none;
+}
+
+.footer-links li{
+  margin:7px 0;
+}
+
+.footer-links a:hover{
+  color:var(--gold);
+}
+
+.footer-bottom{
+  margin-top:35px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  font-size:12px;
+}
+
+/* ================= WHATSAPP ================= */
+
+.whatsapp{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:900;
+  background:var(--success);
+  color:#061219;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:12px;
+  box-shadow:0 12px 35px rgba(0,0,0,.35);
+  transition:.25s;
+}
+
+.whatsapp:hover{
+  transform:scale(1.08);
+}
+
+/* ================= MOBILE ================= */
+
+.mobile-menu{
+  display:none;
+}
+
+@media(max-width:1000px){
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .services{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .dooars-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .partner{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:820px){
+
+  .navlinks{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .nav{
+    min-height:68px;
+  }
+
+  .mobile-menu{
+    position:absolute;
+    top:68px;
+    left:0;
+    right:0;
+    background:rgba(6,18,25,.98);
+    border-bottom:1px solid var(--line);
+    padding:20px;
+  }
+
+  .mobile-menu.active{
+    display:block;
+  }
+
+  .mobile-menu a{
+    display:block;
+    padding:13px;
+    border-bottom:1px solid var(--line);
+    color:#dbe7e9;
+  }
+
+  .feature,
+  .why-grid,
+  .form-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .packages{
+    grid-template-columns:1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:560px){
+
+  section{
+    padding:68px 0;
+  }
+
+  .hero{
+    min-height:750px;
+    padding-top:125px;
+  }
+
+  .hero h1{
+    font-size:49px;
+    letter-spacing:-1.5px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .stats{
+    gap:20px;
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-head h2{
+    font-size:32px;
+    margin-bottom:12px;
+  }
+
+  .grid,
+  .dooars-grid,
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .feature-img{
+    min-height:350px;
+  }
+
+  .feature h2{
+    font-size:35px;
+  }
+
+  .partner{
+    padding:28px;
+  }
+
+  .partner h2{
+    font-size:31px;
+  }
+
+  .gallery{
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:150px;
+  }
+
+  .gallery-item.big{
+    grid-column:span 2;
+    grid-row:span 1;
+  }
+
+  form{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .info-box h2{
+    font-size:33px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .whatsapp{
+    width:55px;
+    height:55px;
+    right:15px;
+    bottom:15px;
+  }
+}
 </style>
 </head>
+
 <body>
+
+<!-- ================= HEADER ================= -->
 
 <header>
   <div class="container nav">
-    <a href="#" class="logo">HIMALAYAN<span>GATEWAY</span></a>
+
+    <a href="#home" class="logo">
+      HIMALAYAN<span>GATEWAY</span>
+    </a>
+
     <nav class="navlinks">
       <a href="#destinations">Destinations</a>
+      <a href="#bhutan">Bhutan</a>
+      <a href="#dooars">Dooars</a>
       <a href="#packages">Packages</a>
-      <a href="#why">Why Us</a>
-      <a href="#quote">Get Quote</a>
+      <a href="#services">Services</a>
+      <a href="#quote" class="btn btn-primary nav-cta">Get Quote</a>
     </nav>
-    <a class="btn btn-primary mobile" href="#quote">Get Quote</a>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#destinations">Destinations</a>
+    <a href="#bhutan">Bhutan</a>
+    <a href="#dooars">Dooars</a>
+    <a href="#packages">Packages</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#why">Why Us</a>
+    <a href="#quote">Get Free Quote</a>
   </div>
 </header>
 
+
 <main>
-<section class="hero">
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
   <div class="container hero-content">
-    <span class="badge">Jaigaon • North Bengal</span>
-    <h1>From the Gateway to the Himalayas.</h1>
-    <p>Discover Bhutan, Sikkim, Darjeeling, Kalimpong & Dooars with local travel support, flexible packages and trusted partner operators.</p>
+
+    <span class="badge">Jaigaon • North Bengal • Eastern Himalaya</span>
+
+    <h1>
+      Your Gateway to
+      <span>Bhutan.</span>
+    </h1>
+
+    <p>
+      Plan unforgettable journeys across Bhutan, Dooars, Sikkim,
+      Darjeeling and Kalimpong with local travel support,
+      flexible itineraries and carefully selected hotels and vehicles.
+    </p>
+
     <div class="hero-actions">
-      <a href="#quote" class="btn btn-primary">Get Free Trip Quote</a>
-      <a href="https://wa.me/919999999999?text=Hello%20I%20want%20to%20plan%20a%20trip." class="btn btn-outline">WhatsApp Us</a>
+
+      <a href="#quote" class="btn btn-primary">
+        ✦ Get Free Trip Quote
+      </a>
+
+      <a
+        href="https://wa.me/919117740558?text=Hello%20Himalayan%20Gateway%2C%20I%20want%20to%20plan%20a%20trip."
+        class="btn btn-outline">
+        💬 WhatsApp Us
+      </a>
+
     </div>
+
     <div class="stats">
-      <div class="stat"><strong>4+</strong><small>Tourism Regions</small></div>
-      <div class="stat"><strong>Local</strong><small>Travel Network</small></div>
-      <div class="stat"><strong>Custom</strong><small>Trip Planning</small></div>
+
+      <div class="stat">
+        <strong>🇧🇹</strong>
+        <small>Bhutan Specialist</small>
+      </div>
+
+      <div class="stat">
+        <strong>5+</strong>
+        <small>Travel Regions</small>
+      </div>
+
+      <div class="stat">
+        <strong>Local</strong>
+        <small>Jaigaon Support</small>
+      </div>
+
+      <div class="stat">
+        <strong>Custom</strong>
+        <small>Trip Planning</small>
+      </div>
+
     </div>
+
   </div>
+
 </section>
+
+
+<!-- ================= DESTINATIONS ================= -->
 
 <section id="destinations">
+
   <div class="container">
+
     <div class="section-head">
-      <div><h2>Choose your escape.</h2></div>
-      <p>One platform for the destinations around Jaigaon and the Eastern Himalayas.</p>
+
+      <div>
+        <div class="kicker">Explore</div>
+        <h2>Choose your escape.</h2>
+      </div>
+
+      <p>
+        One local gateway connecting you with the most beautiful
+        destinations around Bhutan and the Eastern Himalayas.
+      </p>
+
     </div>
+
+
     <div class="grid">
-      <article class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80')"></div><div class="card-body"><h3>Bhutan</h3><p>Thimphu, Paro, Punakha & more.</p><span class="tag">🇧🇹 Kingdom of Bhutan</span></div></article>
-      <article class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=80')"></div><div class="card-body"><h3>Sikkim</h3><p>Gangtok, Pelling, Lachung & Yumthang.</p><span class="tag">🏔️ Himalayan escapes</span></div></article>
-      <article class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=900&q=80')"></div><div class="card-body"><h3>Darjeeling</h3><p>Toy Train, tea gardens & mountain views.</p><span class="tag">🌄 Queen of the Hills</span></div></article>
-      <article class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=80')"></div><div class="card-body"><h3>Dooars</h3><p>Jhalong, Bindu, Rocky Island & forests.</p><span class="tag">🌿 Wild & peaceful</span></div></article>
+
+      <article class="card">
+
+        <div class="card-img"
+        style="background-image:url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="card-body">
+          <h3>🇧🇹 Bhutan</h3>
+          <p>Thimphu, Paro, Punakha, Dochula and Himalayan valleys.</p>
+          <span class="tag">Kingdom of Bhutan</span>
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-img"
+        style="background-image:url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="card-body">
+          <h3>🏔️ Sikkim</h3>
+          <p>Gangtok, Pelling, Lachung, Yumthang and mountain escapes.</p>
+          <span class="tag">Himalayan escapes</span>
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-img"
+        style="background-image:url('https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="card-body">
+          <h3>🌄 Darjeeling</h3>
+          <p>Toy Train, tea gardens, Tiger Hill and mountain views.</p>
+          <span class="tag">Queen of the Hills</span>
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-img"
+        style="background-image:url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="card-body">
+          <h3>🌿 Dooars</h3>
+          <p>Forests, rivers, wildlife and peaceful village escapes.</p>
+          <span class="tag">Wild & peaceful</span>
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-img"
+        style="background-image:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="card-body">
+          <h3>🌲 Kalimpong</h3>
+          <p>Quiet hills, monasteries, views and local experiences.</p>
+          <span class="tag">Peaceful Himalaya</span>
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-img"
+        style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="card-body">
+          <h3>🌸 Mirik</h3>
+          <p>Lake, tea gardens and relaxed hill-station experiences.</p>
+          <span class="tag">Nature getaway</span>
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-img"
+        style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="card-body">
+          <h3>🌳 Forest Retreats</h3>
+          <p>Riverside stays, forests and offbeat North Bengal.</p>
+          <span class="tag">Offbeat journeys</span>
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-img"
+        style="background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="card-body">
+          <h3>✨ Custom Trips</h3>
+          <p>Tell us your destination and we build the journey around you.</p>
+          <span class="tag">Your trip, your way</span>
+        </div>
+
+      </article>
+
     </div>
+
   </div>
+
 </section>
+
+
+<!-- ================= BHUTAN ================= -->
+
+<section id="bhutan" class="bhutan-feature">
+
+  <div class="container feature">
+
+    <div class="feature-img"></div>
+
+    <div>
+
+      <span class="badge">Our Main Destination</span>
+
+      <h2>Bhutan starts from the gateway.</h2>
+
+      <p>
+        From Jaigaon and Phuentsholing, explore the peaceful
+        Himalayan kingdom through carefully planned routes,
+        comfortable stays and flexible travel options.
+      </p>
+
+      <ul class="feature-list">
+
+        <li>
+          <strong>01 — Phuentsholing</strong><br>
+          Gateway to Bhutan and the natural starting point for many journeys.
+        </li>
+
+        <li>
+          <strong>02 — Thimphu</strong><br>
+          Experience Bhutan's capital, culture, markets and mountain surroundings.
+        </li>
+
+        <li>
+          <strong>03 — Paro</strong><br>
+          Discover the iconic valley, monasteries and Himalayan scenery.
+        </li>
+
+        <li>
+          <strong>04 — Punakha & Dochula</strong><br>
+          Beautiful valleys, mountain passes and Bhutanese heritage.
+        </li>
+
+        <li>
+          <strong>05 — Custom Bhutan Routes</strong><br>
+          Tell us your dates, budget and interests and we'll plan accordingly.
+        </li>
+
+      </ul>
+
+      <div class="destination-mini">
+        <span>Phuentsholing</span>
+        <span>Thimphu</span>
+        <span>Paro</span>
+        <span>Punakha</span>
+        <span>Dochula</span>
+        <span>Chele La</span>
+      </div>
+
+      <div style="margin-top:25px">
+
+        <a href="#quote" class="btn btn-primary">
+          Plan My Bhutan Trip
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DOOARS ================= -->
+
+<section id="dooars">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">North Bengal</div>
+        <h2>Discover the Dooars.</h2>
+      </div>
+
+      <p>
+        From riverside villages to forests and wildlife,
+        explore the Dooars beyond the usual tourist routes.
+      </p>
+
+    </div>
+
+
+    <div class="dooars-grid">
+
+      <div class="place">
+        <div class="place-icon">🌿</div>
+        <h3>Samsing</h3>
+        <p>Tea gardens, forest roads and peaceful mountain scenery.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🏞️</div>
+        <h3>Suntaleykhola</h3>
+        <p>Quiet forest retreat surrounded by green hills.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🌊</div>
+        <h3>Rocky Island</h3>
+        <p>Riverside beauty and an excellent offbeat getaway.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">💧</div>
+        <h3>Jhalong</h3>
+        <p>River valley, forests and peaceful village surroundings.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🏔️</div>
+        <h3>Bindu</h3>
+        <p>Himalayan border village surrounded by dramatic scenery.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🌊</div>
+        <h3>Murti</h3>
+        <p>Riverfront stays and access to forest experiences.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🐘</div>
+        <h3>Jaldapara</h3>
+        <p>Wildlife, forest safaris and the famous one-horned rhino habitat.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🌳</div>
+        <h3>Gorumara</h3>
+        <p>Popular forest destination with wildlife and nature experiences.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🐅</div>
+        <h3>Chilapata</h3>
+        <p>Dense forests and adventurous wildlife surroundings.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🏕️</div>
+        <h3>Jayanti</h3>
+        <p>River, hills and one of the most scenic Buxa experiences.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🏞️</div>
+        <h3>Buxa</h3>
+        <p>Forests, hills, heritage trails and nature adventures.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🌲</div>
+        <h3>Raimatang</h3>
+        <p>Offbeat forest destination for travellers looking for quiet stays.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🏡</div>
+        <h3>Rajabhatkhawa</h3>
+        <p>Gateway area for Buxa and surrounding forest destinations.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🌅</div>
+        <h3>Lataguri</h3>
+        <p>Convenient base for exploring Gorumara and nearby forests.</p>
+      </div>
+
+      <div class="place">
+        <div class="place-icon">🗺️</div>
+        <h3>Custom Dooars</h3>
+        <p>Combine multiple villages, forests and stays into one trip.</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:35px">
+      <a href="#quote" class="btn btn-primary">
+        Build My Dooars Trip
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PACKAGES ================= -->
 
 <section id="packages">
+
   <div class="container">
-    <div class="section-head"><div><h2>Popular trip ideas.</h2></div><p>Indicative packages. Final price depends on dates, hotel, vehicle, permits and group size.</p></div>
-    <div class="packages">
-      <div class="package"><h3>Bhutan Explorer</h3><div class="price">Custom Quote</div><ul><li>Jaigaon/Phuentsholing start</li><li>Thimphu & Paro options</li><li>Hotel + vehicle options</li><li>Local partner assistance</li></ul><a href="#quote" class="btn btn-primary">Plan Bhutan</a></div>
-      <div class="package"><h3>Sikkim Escape</h3><div class="price">Custom Quote</div><ul><li>Gangtok & North Sikkim options</li><li>Family/couple/group plans</li><li>Vehicle & stay options</li><li>Permit guidance through partners</li></ul><a href="#quote" class="btn btn-primary">Plan Sikkim</a></div>
-      <div class="package"><h3>Dooars Weekend</h3><div class="price">Custom Quote</div><ul><li>Jhalong & Bindu</li><li>Rocky Island & forest stays</li><li>Local sightseeing</li><li>Flexible 1–3 night plans</li></ul><a href="#quote" class="btn btn-primary">Plan Dooars</a></div>
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">Trip Ideas</div>
+        <h2>Popular journeys.</h2>
+      </div>
+
+      <p>
+        These are starting concepts rather than fixed-price packages.
+        Final planning depends on dates, group size, hotel,
+        vehicle and current travel conditions.
+      </p>
+
     </div>
+
+
+    <div class="packages">
+
+      <div class="package featured">
+
+        <span class="package-badge">MOST POPULAR</span>
+
+        <h3>🇧🇹 Bhutan Explorer</h3>
+
+        <div class="price">Custom Quote</div>
+
+        <div class="sub">
+          Flexible Bhutan itinerary from Jaigaon.
+        </div>
+
+        <ul>
+          <li>Jaigaon / Phuentsholing start</li>
+          <li>Thimphu & Paro options</li>
+          <li>Punakha / Dochula options</li>
+          <li>Hotel categories</li>
+          <li>Vehicle options</li>
+          <li>Travel assistance</li>
+        </ul>
+
+        <a href="#quote" class="btn btn-primary">
+          Plan Bhutan
+        </a>
+
+      </div>
+
+
+      <div class="package">
+
+        <h3>🌿 Dooars Escape</h3>
+
+        <div class="price">Custom Quote</div>
+
+        <div class="sub">
+          Weekend or longer forest getaway.
+        </div>
+
+        <ul>
+          <li>Samsing & Suntaleykhola</li>
+          <li>Jhalong & Bindu</li>
+          <li>Rocky Island</li>
+          <li>Murti / Lataguri</li>
+          <li>Jaldapara / Gorumara</li>
+          <li>Local sightseeing</li>
+        </ul>
+
+        <a href="#quote" class="btn btn-primary">
+          Plan Dooars
+        </a>
+
+      </div>
+
+
+      <div class="package">
+
+        <h3>🏔️ Sikkim Escape</h3>
+
+        <div class="price">Custom Quote</div>
+
+        <div class="sub">
+          Hills, lakes and Himalayan landscapes.
+        </div>
+
+        <ul>
+          <li>Gangtok</li>
+          <li>Pelling</li>
+          <li>Lachung</li>
+          <li>Yumthang options</li>
+          <li>Hotel & vehicle options</li>
+          <li>Permit guidance</li>
+        </ul>
+
+        <a href="#quote" class="btn btn-primary">
+          Plan Sikkim
+        </a>
+
+      </div>
+
+
+      <div class="package">
+
+        <h3>🌄 Darjeeling Escape</h3>
+
+        <div class="price">Custom Quote</div>
+
+        <div class="sub">
+          Classic hills and tea gardens.
+        </div>
+
+        <ul>
+          <li>Tiger Hill</li>
+          <li>Tea gardens</li>
+          <li>Batasia Loop</li>
+          <li>Darjeeling town</li>
+          <li>Hotel options</li>
+          <li>Private vehicle options</li>
+        </ul>
+
+        <a href="#quote" class="btn btn-primary">
+          Plan Darjeeling
+        </a>
+
+      </div>
+
+
+      <div class="package">
+
+        <h3>🌲 Offbeat North Bengal</h3>
+
+        <div class="price">Custom Quote</div>
+
+        <div class="sub">
+          Quiet places away from crowded tourist routes.
+        </div>
+
+        <ul>
+          <li>Kalimpong</li>
+          <li>Mirik</li>
+          <li>Samsing</li>
+          <li>Rocky Island</li>
+          <li>Raimatang</li>
+          <li>Custom combinations</li>
+        </ul>
+
+        <a href="#quote" class="btn btn-primary">
+          Explore Offbeat
+        </a>
+
+      </div>
+
+
+      <div class="package">
+
+        <h3>✨ Multi-Destination</h3>
+
+        <div class="price">Fully Custom</div>
+
+        <div class="sub">
+          Combine Bhutan with North Bengal or Sikkim.
+        </div>
+
+        <ul>
+          <li>Bhutan + Dooars</li>
+          <li>Bhutan + Sikkim</li>
+          <li>Darjeeling + Dooars</li>
+          <li>Family tours</li>
+          <li>Group tours</li>
+          <li>Longer journeys</li>
+        </ul>
+
+        <a href="#quote" class="btn btn-primary">
+          Create My Trip
+        </a>
+
+      </div>
+
+    </div>
+
   </div>
+
 </section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section id="services">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">Travel Support</div>
+        <h2>More than just a package.</h2>
+      </div>
+
+      <p>
+        Build your trip your way. Choose only the services you actually need.
+      </p>
+
+    </div>
+
+
+    <div class="services">
+
+      <div class="service">
+        <div class="service-icon">🚗</div>
+        <h3>Private Vehicles</h3>
+        <p>Sedan, SUV and larger vehicle options depending on your group.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🏨</div>
+        <h3>Hotels & Stays</h3>
+        <p>Budget, standard and premium stay options according to availability.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🗺️</div>
+        <h3>Custom Itinerary</h3>
+        <p>We plan around your dates, interests, budget and preferred pace.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">📱</div>
+        <h3>Travel Assistance</h3>
+        <p>WhatsApp-based support before and during your trip where available.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🇧🇹</div>
+        <h3>Bhutan Assistance</h3>
+        <p>Guidance for your Bhutan travel planning and relevant arrangements.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🌿</div>
+        <h3>Local Experiences</h3>
+        <p>Explore villages, forests, rivers and offbeat destinations.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">👨‍👩‍👧‍👦</div>
+        <h3>Family & Groups</h3>
+        <p>Flexible arrangements for families, friends, couples and groups.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🤝</div>
+        <h3>Special Partner Help</h3>
+        <p>For selected requirements, we can coordinate with suitable local partners.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PARTNER MODEL ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="partner">
+
+      <div>
+
+        <span class="badge">Our Travel Network</span>
+
+        <h2>
+          Your trip stays with us.
+        </h2>
+
+        <p>
+          We aim to handle your trip directly whenever possible.
+          For special requirements, destinations or situations where
+          additional local support is needed, we may coordinate with
+          a suitable travel partner.
+        </p>
+
+        <div style="margin-top:23px">
+
+          <a href="#quote" class="btn btn-primary">
+            Tell Us What You Need
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="partner-box">
+
+        <p>
+          <strong>How it works</strong>
+        </p>
+
+        <p style="margin-top:12px">
+          01 → You send an enquiry.
+        </p>
+
+        <p>
+          02 → We understand your requirement.
+        </p>
+
+        <p>
+          03 → We handle it directly where possible.
+        </p>
+
+        <p>
+          04 → Special cases may be coordinated with a suitable partner.
+        </p>
+
+        <p>
+          05 → You receive the best available option.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= GALLERY ================= -->
+
+<section id="gallery">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">Visual Journey</div>
+        <h2>See where you could go.</h2>
+      </div>
+
+      <p>
+        Bhutan, forests, rivers and Himalayan landscapes are waiting.
+      </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+      <div class="gallery-item big"
+      style="background-image:url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1400&q=85')">
+      </div>
+
+      <div class="gallery-item"
+      style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="gallery-item"
+      style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="gallery-item"
+      style="background-image:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="gallery-item"
+      style="background-image:url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="gallery-item"
+      style="background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="gallery-item"
+      style="background-image:url('https://images.unsplash.com/photo-1524498250077-390f9e378fc0?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= WHY US ================= -->
 
 <section id="why">
-  <div class="container feature">
-    <div class="feature-img"></div>
-    <div>
-      <span class="badge">Built from Jaigaon</span>
-      <h2 style="font-size:42px;margin:18px 0 12px">Local knowledge. Flexible travel.</h2>
-      <p style="color:var(--muted)">We can plan trips ourselves or connect travellers with suitable local travel partners. That means more choice without forcing every trip into one fixed package.</p>
-      <ul>
-        <li><strong>01 — Custom itineraries</strong><br>Build a trip around your dates, budget and interests.</li>
-        <li><strong>02 — Local partner network</strong><br>Connect with operators for destinations we don't directly operate.</li>
-        <li><strong>03 — One enquiry</strong><br>Tell us what you need and we'll help find the right option.</li>
-      </ul>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">Why Himalayan Gateway</div>
+        <h2>Simple travel planning.</h2>
+      </div>
+
+      <p>
+        No need to fit your holiday into someone else's fixed itinerary.
+      </p>
+
     </div>
+
+
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-number">01</div>
+        <h3>Jaigaon-based approach</h3>
+        <p>
+          Our location gives us a natural connection to Bhutan
+          and the surrounding North Bengal tourism circuit.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-number">02</div>
+        <h3>Flexible planning</h3>
+        <p>
+          Choose your dates, destinations, hotel category,
+          vehicle and travel style.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-number">03</div>
+        <h3>One enquiry</h3>
+        <p>
+          Send your requirements once and we help you work
+          through the available options.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-number">04</div>
+        <h3>Local partner support</h3>
+        <p>
+          Selected special requirements can be coordinated
+          through suitable local partners when necessary.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-number">05</div>
+        <h3>Transparent planning</h3>
+        <p>
+          Prices can vary with season, hotel, vehicle, permits,
+          group size and availability, so quotes are prepared accordingly.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-number">06</div>
+        <h3>Human support</h3>
+        <p>
+          Talk to a real travel contact through WhatsApp
+          instead of dealing with a complicated booking system.
+        </p>
+      </div>
+
+    </div>
+
   </div>
+
 </section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">Questions</div>
+        <h2>Frequently asked.</h2>
+      </div>
+
+    </div>
+
+
+    <div class="faq">
+
+      <details>
+        <summary>Can you plan a completely custom Bhutan trip?</summary>
+        <p>
+          Yes. Tell us your travel dates, number of travellers,
+          preferred destinations, hotel category and approximate budget.
+        </p>
+      </details>
+
+      <details>
+        <summary>Do you arrange vehicles?</summary>
+        <p>
+          Vehicle options can be included depending on destination,
+          group size, route and availability.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can I book only a hotel or vehicle?</summary>
+        <p>
+          You can mention exactly what you need in the enquiry form.
+          We'll let you know what options are available.
+        </p>
+      </details>
+
+      <details>
+        <summary>Do you cover Dooars offbeat destinations?</summary>
+        <p>
+          Yes. Samsing, Suntaleykhola, Rocky Island, Jhalong,
+          Bindu, Murti, Raimatang, Jayanti, Buxa and other
+          North Bengal destinations can be included in custom plans.
+        </p>
+      </details>
+
+      <details>
+        <summary>Will every booking be given to another travel agent?</summary>
+        <p>
+          No. Our aim is to handle trips directly whenever possible.
+          Partner coordination is intended only for selected special
+          requirements or cases where additional local support is useful.
+        </p>
+      </details>
+
+      <details>
+        <summary>Are the prices fixed on the website?</summary>
+        <p>
+          No. We prefer current quotations because prices can change
+          according to season, hotel, vehicle, group size, availability
+          and travel requirements.
+        </p>
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= QUOTE ================= -->
 
 <section id="quote">
+
   <div class="container form-wrap">
+
     <div class="info-box">
+
       <span class="badge">Free Trip Planning</span>
+
       <h2>Tell us your plan.</h2>
-      <p>Submit your travel requirements. We'll contact you on WhatsApp or phone and, where appropriate, connect your enquiry with a suitable local travel partner.</p>
-      <div style="margin-top:25px;color:#d8e4e7">
-        <p><strong>📍 Base:</strong> Jaigaon, West Bengal</p>
-        <p><strong>🌏 Focus:</strong> Bhutan • Sikkim • Darjeeling • Dooars</p>
-        <p><strong>💬 Response:</strong> WhatsApp / Phone</p>
+
+      <p>
+        Share your travel requirements and we'll contact you
+        through WhatsApp to discuss the best available option.
+      </p>
+
+
+      <div class="contact-lines">
+
+        <div>
+          <strong>📍 Base</strong><br>
+          Jaigaon, West Bengal
+        </div>
+
+        <div>
+          <strong>🇧🇹 Main Focus</strong><br>
+          Bhutan & Eastern Himalaya
+        </div>
+
+        <div>
+          <strong>🌿 Regions</strong><br>
+          Bhutan • Dooars • Sikkim • Darjeeling • Kalimpong
+        </div>
+
+        <div>
+          <strong>💬 Response</strong><br>
+          WhatsApp / Phone
+        </div>
+
       </div>
+
+
+      <div style="margin-top:25px">
+
+        <a
+          href="https://wa.me/919117740558?text=Hello%20Himalayan%20Gateway%2C%20I%20want%20to%20discuss%20a%20trip."
+          class="btn btn-green">
+          💬 Chat on WhatsApp
+        </a>
+
+      </div>
+
     </div>
+
 
     <div class="form-box">
+
       <form id="quoteForm">
-        <div><label>Full Name *</label><input id="name" required></div>
-        <div><label>WhatsApp Number *</label><input id="phone" type="tel" required></div>
-        <div><label>Destination *</label><select id="destination" required><option value="">Choose</option><option>Bhutan</option><option>Sikkim</option><option>Darjeeling</option><option>Kalimpong</option><option>Mirik</option><option>Dooars</option><option>Jhalong / Bindu</option><option>Rocky Island</option><option>Custom / Multiple</option></select></div>
-        <div><label>Travel Date</label><input id="date" type="date"></div>
-        <div><label>Travellers</label><input id="pax" type="number" min="1" value="2"></div>
-        <div><label>Nights</label><input id="nights" type="number" min="0" value="2"></div>
-        <div><label>Approx. Budget</label><select id="budget"><option>Not sure</option><option>Under ₹20,000</option><option>₹20,000–₹40,000</option><option>₹40,000–₹70,000</option><option>₹70,000+</option></select></div>
-        <div><label>Trip Type</label><select id="type"><option>Family</option><option>Couple</option><option>Friends</option><option>Solo</option><option>Group</option><option>Business</option></select></div>
-        <div class="full"><label>Message / Requirements</label><textarea id="message" placeholder="Pickup location, hotel preference, sightseeing, special requirements..."></textarea></div>
-        <div class="full"><button class="btn btn-primary" style="width:100%;border:0" type="submit">Send Enquiry on WhatsApp</button><div class="notice">By submitting, you agree that we may contact you regarding your travel enquiry.</div></div>
+
+        <div>
+          <label>Full Name *</label>
+          <input id="name" type="text" required placeholder="Your name">
+        </div>
+
+        <div>
+          <label>WhatsApp Number *</label>
+          <input id="phone" type="tel" required placeholder="10-digit number">
+        </div>
+
+        <div>
+          <label>Destination *</label>
+
+          <select id="destination" required>
+
+            <option value="">Choose destination</option>
+
+            <option>Bhutan</option>
+            <option>Thimphu</option>
+            <option>Paro</option>
+            <option>Punakha</option>
+
+            <option>Dooars</option>
+            <option>Samsing</option>
+            <option>Suntaleykhola</option>
+            <option>Rocky Island</option>
+            <option>Jhalong</option>
+            <option>Bindu</option>
+            <option>Murti</option>
+            <option>Jaldapara</option>
+            <option>Gorumara</option>
+            <option>Jayanti</option>
+            <option>Buxa</option>
+            <option>Chilapata</option>
+            <option>Raimatang</option>
+
+            <option>Sikkim</option>
+            <option>Gangtok</option>
+            <option>Pelling</option>
+            <option>Lachung / Yumthang</option>
+
+            <option>Darjeeling</option>
+            <option>Kalimpong</option>
+            <option>Mirik</option>
+
+            <option>Custom / Multiple Destinations</option>
+
+          </select>
+
+        </div>
+
+
+        <div>
+          <label>Travel Date</label>
+          <input id="date" type="date">
+        </div>
+
+
+        <div>
+          <label>Travellers</label>
+          <input id="pax" type="number" min="1" value="2">
+        </div>
+
+
+        <div>
+          <label>Nights</label>
+          <input id="nights" type="number" min="0" value="2">
+        </div>
+
+
+        <div>
+          <label>Approx. Budget</label>
+
+          <select id="budget">
+            <option>Not sure</option>
+            <option>Under ₹20,000</option>
+            <option>₹20,000–₹40,000</option>
+            <option>₹40,000–₹70,000</option>
+            <option>₹70,000+</option>
+          </select>
+
+        </div>
+
+
+        <div>
+          <label>Trip Type</label>
+
+          <select id="type">
+            <option>Family</option>
+            <option>Couple</option>
+            <option>Friends</option>
+            <option>Solo</option>
+            <option>Group</option>
+            <option>Senior Citizens</option>
+            <option>Business</option>
+          </select>
+
+        </div>
+
+
+        <div>
+          <label>Hotel Preference</label>
+
+          <select id="hotel">
+            <option>No preference</option>
+            <option>Budget</option>
+            <option>Standard</option>
+            <option>Premium</option>
+            <option>Luxury</option>
+          </select>
+        </div>
+
+
+        <div>
+          <label>Vehicle Requirement</label>
+
+          <select id="vehicle">
+            <option>No vehicle required</option>
+            <option>Hatchback / Small Car</option>
+            <option>Sedan</option>
+            <option>SUV</option>
+            <option>Tempo Traveller</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+
+
+        <div class="full">
+
+          <label>Message / Requirements</label>
+
+          <textarea
+            id="message"
+            placeholder="Pickup location, hotel preference, sightseeing, special requirements, etc.">
+          </textarea>
+
+        </div>
+
+
+        <div class="full">
+
+          <button
+            class="btn btn-primary"
+            style="width:100%;border:0"
+            type="submit">
+
+            💬 Send Enquiry on WhatsApp
+
+          </button>
+
+          <div class="notice">
+            Your enquiry will open WhatsApp with the information you entered.
+            We use these details only to discuss your travel enquiry.
+          </div>
+
+        </div>
+
       </form>
+
     </div>
+
   </div>
+
 </section>
+
 </main>
 
+
+<!-- ================= FOOTER ================= -->
+
 <footer>
-  <div class="container footer-row">
-    <div><strong>HIMALYAN GATEWAY</strong><br>Jaigaon • Bhutan • Sikkim • Darjeeling • Dooars</div>
-    <div>© 2026 All rights reserved.</div>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+
+        <div class="footer-title">
+          HIMALAYAN<span style="color:var(--gold)">GATEWAY</span>
+        </div>
+
+        <p>
+          Your local gateway to Bhutan, Dooars,
+          Sikkim, Darjeeling and the Eastern Himalayas.
+        </p>
+
+        <p style="margin-top:15px">
+          📍 Jaigaon, West Bengal
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <div class="footer-title">Explore</div>
+
+        <ul class="footer-links">
+          <li><a href="#bhutan">Bhutan</a></li>
+          <li><a href="#dooars">Dooars</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+
+      </div>
+
+
+      <div>
+
+        <div class="footer-title">Contact</div>
+
+        <ul class="footer-links">
+          <li>
+            <a href="https://wa.me/919117740558">
+              WhatsApp
+            </a>
+          </li>
+
+          <li>
+            <a href="#quote">
+              Get a Quote
+            </a>
+          </li>
+
+          <li>
+            <a href="#why">
+              Why Us
+            </a>
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <div>
+        © 2026 Himalayan Gateway. All rights reserved.
+      </div>
+
+      <div>
+        Bhutan • Dooars • Sikkim • Darjeeling • North Bengal
+      </div>
+
+    </div>
+
   </div>
+
 </footer>
 
-<a class="whatsapp" href="https://wa.me/+919117740558?text=Hello%20I%20want%20to%20plan%20a%20trip." aria-label="WhatsApp">WA</a>
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+
+<a
+  class="whatsapp"
+  href="https://wa.me/919117740558?text=Hello%20Himalayan%20Gateway%2C%20I%20want%20to%20plan%20a%20trip."
+  aria-label="Chat on WhatsApp">
+
+  WA
+
+</a>
+
 
 <script>
-const WHATSAPP_NUMBER = "+919117740558"; // CHANGE THIS to your WhatsApp number
+
+/* ================= MOBILE MENU ================= */
+
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", function(){
+
+  mobileMenu.classList.toggle("active");
+  document.body.classList.toggle("menu-open");
+
+});
+
+document.querySelectorAll(".mobile-menu a").forEach(function(link){
+
+  link.addEventListener("click", function(){
+
+    mobileMenu.classList.remove("active");
+    document.body.classList.remove("menu-open");
+
+  });
+
+});
+
+
+/* ================= WHATSAPP NUMBER ================= */
+
+const WHATSAPP_NUMBER = "919117740558";
+
+
+/* ================= QUOTE FORM ================= */
 
 document.getElementById("quoteForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  const data = {
-    name: document.getElementById("name").value,
-    phone: document.getElementById("phone").value,
-    destination: document.getElementById("destination").value,
-    date: document.getElementById("date").value || "Flexible",
-    pax: document.getElementById("pax").value,
-    nights: document.getElementById("nights").value,
-    budget: document.getElementById("budget").value,
-    type: document.getElementById("type").value,
-    message: document.getElementById("message").value || "None"
-  };
-  const text =
-`🌄 NEW TRAVEL ENQUIRY
-Name: ${data.name}
-WhatsApp: ${data.phone}
-Destination: ${data.destination}
-Travel Date: ${data.date}
-Travellers: ${data.pax}
-Nights: ${data.nights}
-Budget: ${data.budget}
-Trip Type: ${data.type}
-Requirements: ${data.message}
 
+  e.preventDefault();
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const destination =
+    document.getElementById("destination").value;
+
+  const date =
+    document.getElementById("date").value || "Flexible";
+
+  const pax =
+    document.getElementById("pax").value;
+
+  const nights =
+    document.getElementById("nights").value;
+
+  const budget =
+    document.getElementById("budget").value;
+
+  const type =
+    document.getElementById("type").value;
+
+  const hotel =
+    document.getElementById("hotel").value;
+
+  const vehicle =
+    document.getElementById("vehicle").value;
+
+  const message =
+    document.getElementById("message").value.trim() || "None";
+
+
+  const text =
+
+`🌄 NEW TRAVEL ENQUIRY
+━━━━━━━━━━━━━━━━━━
+
+👤 Name:
+${name}
+
+📱 Customer WhatsApp:
+${phone}
+
+📍 Destination:
+${destination}
+
+📅 Travel Date:
+${date}
+
+👥 Travellers:
+${pax}
+
+🌙 Nights:
+${nights}
+
+💰 Approx. Budget:
+${budget}
+
+❤️ Trip Type:
+${type}
+
+🏨 Hotel Preference:
+${hotel}
+
+🚗 Vehicle:
+${vehicle}
+
+📝 Requirements:
+${message}
+
+━━━━━━━━━━━━━━━━━━
 Source: Himalayan Gateway Website`;
 
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+
+  const whatsappURL =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(text);
+
+
+  window.open(whatsappURL, "_blank");
+
 });
+
+
+/* ================= DATE LIMIT ================= */
+
+const dateInput = document.getElementById("date");
+
+const today = new Date();
+
+const yyyy = today.getFullYear();
+
+const mm = String(today.getMonth()+1).padStart(2,"0");
+
+const dd = String(today.getDate()).padStart(2,"0");
+
+dateInput.min = `${yyyy}-${mm}-${dd}`;
+
 </script>
+
 </body>
 </html>
