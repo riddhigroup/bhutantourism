@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore Bhutan, Sikkim, Darjeeling, Kalimpong and Dooars from Jaigaon with trusted local travel support.">
+<title>Himalayan Gateway | Bhutan • Sikkim • Darjeeling • Dooars</title>
+<style>
+:root{
+  --bg:#07131b;--bg2:#0d2029;--card:rgba(255,255,255,.08);--text:#f7fbfc;
+  --muted:#b8c9ce;--accent:#d8b36a;--accent2:#8fd3c7;--line:rgba(255,255,255,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1160px,92%);margin:auto}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,19,27,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:800;letter-spacing:.4px}.logo span{color:var(--accent)}
+.navlinks{display:flex;gap:25px;align-items:center;font-size:14px;color:#d9e5e8}
+.navlinks a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:12px;border:1px solid var(--line);font-weight:700;cursor:pointer;transition:.25s}
+.btn-primary{background:var(--accent);color:#111;border-color:var(--accent)}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.btn-outline:hover{background:rgba(255,255,255,.08)}
+.hero{min-height:760px;padding:150px 0 80px;display:flex;align-items:center;position:relative;overflow:hidden;
+background:linear-gradient(180deg,rgba(4,12,18,.2),rgba(7,19,27,.96)),url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero:after{content:"";position:absolute;inset:auto -10% -160px;height:300px;background:var(--bg);border-radius:50% 50% 0 0/100% 100% 0 0}
+.hero-content{max-width:780px;position:relative;z-index:2}
+.badge{display:inline-block;border:1px solid rgba(216,179,106,.45);background:rgba(216,179,106,.1);color:#f1d89e;padding:8px 13px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+h1{font-size:clamp(42px,7vw,78px);line-height:1.02;margin:20px 0}
+.hero p{font-size:19px;color:#d3e0e4;max-width:670px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stats{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
+.stat strong{font-size:25px;display:block;color:var(--accent)}.stat small{color:var(--muted)}
+section{padding:90px 0}
+.section-head{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:35px}
+.section-head h2{font-size:38px;line-height:1.1}.section-head p{color:var(--muted);max-width:550px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:rgba(216,179,106,.45)}
+.card-img{height:190px;background-size:cover;background-position:center}
+.card-body{padding:20px}.card-body h3{font-size:21px;margin-bottom:7px}.card-body p{color:var(--muted);font-size:14px}
+.tag{display:inline-block;color:#bfe5de;font-size:12px;margin-top:12px}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.package{padding:25px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035))}
+.package h3{font-size:23px}.package .price{font-size:28px;color:var(--accent);font-weight:800;margin:10px 0}.package ul{list-style:none;color:var(--muted);font-size:14px;margin:15px 0}.package li{margin:7px 0}.package li:before{content:"✓ ";color:var(--accent2)}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.feature-img{height:470px;border-radius:25px;background:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85') center/cover}
+.feature ul{list-style:none;margin-top:22px}.feature li{padding:12px 0;border-bottom:1px solid var(--line);color:var(--muted)}.feature li strong{color:white}
+.form-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:25px}
+.info-box,.form-box{border:1px solid var(--line);background:var(--card);border-radius:24px;padding:30px}
+.info-box{background:linear-gradient(145deg,rgba(216,179,106,.13),rgba(255,255,255,.04))}
+.info-box h2{font-size:38px;margin:15px 0}.info-box p{color:var(--muted)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:15px}.full{grid-column:1/-1}
+label{font-size:12px;color:#c9d7da;margin-bottom:6px;display:block}
+input,select,textarea{width:100%;background:rgba(0,0,0,.22);border:1px solid var(--line);color:white;padding:13px;border-radius:11px;outline:none}
+select option{color:#111}textarea{min-height:110px;resize:vertical}
+.notice{font-size:12px;color:#9eb0b5;margin-top:10px}
+footer{padding:35px 0;border-top:1px solid var(--line);color:var(--muted)}
+.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.mobile{display:none}
+.whatsapp{position:fixed;right:20px;bottom:20px;z-index:90;background:#25D366;color:#07131b;border-radius:50%;width:58px;height:58px;display:flex;align-items:center;justify-content:center;font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.packages,.feature,.form-wrap{grid-template-columns:1fr}.feature-img{height:350px}.navlinks{display:none}.mobile{display:block}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{min-height:700px;padding-top:125px}h1{font-size:48px}.hero p{font-size:16px}.stats{gap:18px}section{padding:65px 0}.section-head{display:block}.section-head h2{font-size:31px;margin-bottom:12px}form{grid-template-columns:1fr}.full{grid-column:auto}.nav{height:65px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">HIMALAYAN<span>GATEWAY</span></a>
+    <nav class="navlinks">
+      <a href="#destinations">Destinations</a>
+      <a href="#packages">Packages</a>
+      <a href="#why">Why Us</a>
+      <a href="#quote">Get Quote</a>
+    </nav>
+    <a class="btn btn-primary mobile" href="#quote">Get Quote</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-content">
+    <span class="badge">Jaigaon • North Bengal</span>
+    <h1>From the Gateway to the Himalayas.</h1>
+    <p>Discover Bhutan, Sikkim, Darjeeling, Kalimpong & Dooars with local travel support, flexible packages and trusted partner operators.</p>
+    <div class="hero-actions">
+      <a href="#quote" class="btn btn-primary">Get Free Trip Quote</a>
+      <a href="https://wa.me/919999999999?text=Hello%20I%20want%20to%20plan%20a%20trip." class="btn btn-outline">WhatsApp Us</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>4+</strong><small>Tourism Regions</small></div>
+      <div class="stat"><strong>Local</strong><small>Travel Network</small></div>
+      <div class="stat"><strong>Custom</strong><small>Trip Planning</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="destinations">
+  <div class="container">
+    <div class="section-head">
+      <div><h2>Choose your escape.</h2></div>
+      <p>One platform for the destinations around Jaigaon and the Eastern Himalayas.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80')"></div><div class="card-body"><h3>Bhutan</h3><p>Thimphu, Paro, Punakha & more.</p><span class="tag">🇧🇹 Kingdom of Bhutan</span></div></article>
+      <article class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=80')"></div><div class="card-body"><h3>Sikkim</h3><p>Gangtok, Pelling, Lachung & Yumthang.</p><span class="tag">🏔️ Himalayan escapes</span></div></article>
+      <article class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=900&q=80')"></div><div class="card-body"><h3>Darjeeling</h3><p>Toy Train, tea gardens & mountain views.</p><span class="tag">🌄 Queen of the Hills</span></div></article>
+      <article class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=80')"></div><div class="card-body"><h3>Dooars</h3><p>Jhalong, Bindu, Rocky Island & forests.</p><span class="tag">🌿 Wild & peaceful</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="container">
+    <div class="section-head"><div><h2>Popular trip ideas.</h2></div><p>Indicative packages. Final price depends on dates, hotel, vehicle, permits and group size.</p></div>
+    <div class="packages">
+      <div class="package"><h3>Bhutan Explorer</h3><div class="price">Custom Quote</div><ul><li>Jaigaon/Phuentsholing start</li><li>Thimphu & Paro options</li><li>Hotel + vehicle options</li><li>Local partner assistance</li></ul><a href="#quote" class="btn btn-primary">Plan Bhutan</a></div>
+      <div class="package"><h3>Sikkim Escape</h3><div class="price">Custom Quote</div><ul><li>Gangtok & North Sikkim options</li><li>Family/couple/group plans</li><li>Vehicle & stay options</li><li>Permit guidance through partners</li></ul><a href="#quote" class="btn btn-primary">Plan Sikkim</a></div>
+      <div class="package"><h3>Dooars Weekend</h3><div class="price">Custom Quote</div><ul><li>Jhalong & Bindu</li><li>Rocky Island & forest stays</li><li>Local sightseeing</li><li>Flexible 1–3 night plans</li></ul><a href="#quote" class="btn btn-primary">Plan Dooars</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container feature">
+    <div class="feature-img"></div>
+    <div>
+      <span class="badge">Built from Jaigaon</span>
+      <h2 style="font-size:42px;margin:18px 0 12px">Local knowledge. Flexible travel.</h2>
+      <p style="color:var(--muted)">We can plan trips ourselves or connect travellers with suitable local travel partners. That means more choice without forcing every trip into one fixed package.</p>
+      <ul>
+        <li><strong>01 — Custom itineraries</strong><br>Build a trip around your dates, budget and interests.</li>
+        <li><strong>02 — Local partner network</strong><br>Connect with operators for destinations we don't directly operate.</li>
+        <li><strong>03 — One enquiry</strong><br>Tell us what you need and we'll help find the right option.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="quote">
+  <div class="container form-wrap">
+    <div class="info-box">
+      <span class="badge">Free Trip Planning</span>
+      <h2>Tell us your plan.</h2>
+      <p>Submit your travel requirements. We'll contact you on WhatsApp or phone and, where appropriate, connect your enquiry with a suitable local travel partner.</p>
+      <div style="margin-top:25px;color:#d8e4e7">
+        <p><strong>📍 Base:</strong> Jaigaon, West Bengal</p>
+        <p><strong>🌏 Focus:</strong> Bhutan • Sikkim • Darjeeling • Dooars</p>
+        <p><strong>💬 Response:</strong> WhatsApp / Phone</p>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <form id="quoteForm">
+        <div><label>Full Name *</label><input id="name" required></div>
+        <div><label>WhatsApp Number *</label><input id="phone" type="tel" required></div>
+        <div><label>Destination *</label><select id="destination" required><option value="">Choose</option><option>Bhutan</option><option>Sikkim</option><option>Darjeeling</option><option>Kalimpong</option><option>Mirik</option><option>Dooars</option><option>Jhalong / Bindu</option><option>Rocky Island</option><option>Custom / Multiple</option></select></div>
+        <div><label>Travel Date</label><input id="date" type="date"></div>
+        <div><label>Travellers</label><input id="pax" type="number" min="1" value="2"></div>
+        <div><label>Nights</label><input id="nights" type="number" min="0" value="2"></div>
+        <div><label>Approx. Budget</label><select id="budget"><option>Not sure</option><option>Under ₹20,000</option><option>₹20,000–₹40,000</option><option>₹40,000–₹70,000</option><option>₹70,000+</option></select></div>
+        <div><label>Trip Type</label><select id="type"><option>Family</option><option>Couple</option><option>Friends</option><option>Solo</option><option>Group</option><option>Business</option></select></div>
+        <div class="full"><label>Message / Requirements</label><textarea id="message" placeholder="Pickup location, hotel preference, sightseeing, special requirements..."></textarea></div>
+        <div class="full"><button class="btn btn-primary" style="width:100%;border:0" type="submit">Send Enquiry on WhatsApp</button><div class="notice">By submitting, you agree that we may contact you regarding your travel enquiry.</div></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div><strong>HIMALYAN GATEWAY</strong><br>Jaigaon • Bhutan • Sikkim • Darjeeling • Dooars</div>
+    <div>© 2026 All rights reserved.</div>
+  </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/+919117740558?text=Hello%20I%20want%20to%20plan%20a%20trip." aria-label="WhatsApp">WA</a>
+
+<script>
+const WHATSAPP_NUMBER = "+919117740558"; // CHANGE THIS to your WhatsApp number
+
+document.getElementById("quoteForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const data = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    destination: document.getElementById("destination").value,
+    date: document.getElementById("date").value || "Flexible",
+    pax: document.getElementById("pax").value,
+    nights: document.getElementById("nights").value,
+    budget: document.getElementById("budget").value,
+    type: document.getElementById("type").value,
+    message: document.getElementById("message").value || "None"
+  };
+  const text =
+`🌄 NEW TRAVEL ENQUIRY
+Name: ${data.name}
+WhatsApp: ${data.phone}
+Destination: ${data.destination}
+Travel Date: ${data.date}
+Travellers: ${data.pax}
+Nights: ${data.nights}
+Budget: ${data.budget}
+Trip Type: ${data.type}
+Requirements: ${data.message}
+
+Source: Himalayan Gateway Website`;
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+});
+</script>
+</body>
+</html>
