@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Himalayan Gateway — Admin Panel</title>
+
+<style>
+
+:root{
+--bg:#061018;
+--panel:#102832;
+--panel2:#0c2029;
+--gold:#d8b36a;
+--text:#f7fbfc;
+--muted:#9fb4bb;
+--line:#ffffff18;
+--green:#25D366;
+--red:#ff6b6b;
+--blue:#5ca8ff;
+}
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:linear-gradient(135deg,#061018,#0b2029);
+color:var(--text);
+}
+
+button,
+input,
+select,
+textarea{
+font:inherit;
+}
+
+button{
+cursor:pointer;
+}
+
+.hidden{
+display:none!important;
+}
+
+/* LOGIN */
+
+.login-screen{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.login-box{
+width:min(420px,100%);
+background:#ffffff0b;
+border:1px solid var(--line);
+border-radius:22px;
+padding:35px;
+box-shadow:0 20px 60px #0005;
+}
+
+.logo{
+font-size:25px;
+font-weight:900;
+margin-bottom:5px;
+}
+
+.logo span{
+color:var(--gold);
+}
+
+.login-sub{
+color:var(--muted);
+font-size:13px;
+margin-bottom:25px;
+}
+
+label{
+display:block;
+font-size:12px;
+color:#c8d7db;
+margin-bottom:6px;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:12px;
+border:1px solid var(--line);
+border-radius:10px;
+background:#071820;
+color:white;
+outline:none;
+margin-bottom:14px;
+}
+
+textarea{
+min-height:100px;
+resize:vertical;
+}
+
+.btn{
+border:1px solid var(--line);
+background:#16313c;
+color:white;
+padding:11px 16px;
+border-radius:10px;
+font-weight:700;
+}
+
+.btn:hover{
+opacity:.9;
+}
+
+.gold{
+background:var(--gold);
+color:#111;
+border-color:var(--gold);
+}
+
+.green{
+background:var(--green);
+color:#07131b;
+border-color:var(--green);
+}
+
+.red{
+background:#7b2630;
+border-color:#a83b46;
+}
+
+.login-error{
+color:#ff8b8b;
+font-size:12px;
+margin-top:10px;
+}
+
+/* APP */
+
+.app{
+display:none;
+min-height:100vh;
+}
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+bottom:0;
+width:240px;
+background:#07151d;
+border-right:1px solid var(--line);
+padding:25px 15px;
+}
+
+.side-logo{
+padding:0 12px 25px;
+border-bottom:1px solid var(--line);
+margin-bottom:20px;
+}
+
+.nav-btn{
+width:100%;
+text-align:left;
+background:transparent;
+border:0;
+color:#b8c9ce;
+padding:13px 12px;
+border-radius:10px;
+margin:3px 0;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+background:#ffffff0d;
+color:var(--gold);
+}
+
+.main{
+margin-left:240px;
+padding:25px;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:25px;
+}
+
+.topbar h1{
+margin:0;
+font-size:27px;
+}
+
+.topbar p{
+margin:5px 0 0;
+font-size:12px;
+color:var(--muted);
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:25px;
+}
+
+.card{
+background:#ffffff0b;
+border:1px solid var(--line);
+border-radius:16px;
+padding:20px;
+}
+
+.card-title{
+font-size:12px;
+color:var(--muted);
+}
+
+.card-value{
+font-size:26px;
+font-weight:900;
+margin-top:8px;
+color:var(--gold);
+}
+
+.panel{
+background:#ffffff0b;
+border:1px solid var(--line);
+border-radius:18px;
+padding:20px;
+margin-bottom:20px;
+}
+
+.panel h2{
+margin-top:0;
+font-size:18px;
+}
+
+.grid2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.full{
+grid-column:1/-1;
+}
+
+.mode{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-bottom:20px;
+}
+
+.mode label{
+margin:0;
+}
+
+.mode input{
+display:none;
+}
+
+.mode-box{
+display:block;
+padding:15px;
+border:1px solid var(--line);
+border-radius:12px;
+background:#071820;
+cursor:pointer;
+}
+
+.mode input:checked + .mode-box{
+border-color:var(--gold);
+background:#d8b36a15;
+}
+
+.mode-title{
+font-weight:800;
+}
+
+.mode-text{
+font-size:11px;
+color:var(--muted);
+margin-top:4px;
+}
+
+.result-box{
+background:#071820;
+border:1px solid var(--line);
+border-radius:15px;
+padding:18px;
+margin-top:15px;
+}
+
+.result-row{
+display:flex;
+justify-content:space-between;
+padding:8px 0;
+border-bottom:1px solid var(--line);
+font-size:13px;
+}
+
+.result-row:last-child{
+border-bottom:0;
+}
+
+.result-total{
+display:flex;
+justify-content:space-between;
+font-size:21px;
+font-weight:900;
+color:var(--gold);
+padding-top:15px;
+}
+
+.table-wrap{
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:700px;
+}
+
+th,
+td{
+padding:12px;
+text-align:left;
+border-bottom:1px solid var(--line);
+font-size:12px;
+}
+
+th{
+color:var(--muted);
+font-weight:600;
+}
+
+.badge{
+display:inline-block;
+padding:5px 8px;
+border-radius:20px;
+font-size:10px;
+background:#ffffff12;
+}
+
+.badge.green{
+background:#25d36620;
+color:#5cff91;
+}
+
+.badge.gold{
+background:#d8b36a20;
+color:var(--gold);
+}
+
+.badge.blue{
+background:#5ca8ff20;
+color:#70b7ff;
+}
+
+.small{
+font-size:11px;
+color:var(--muted);
+}
+
+.partner-card{
+background:#071820;
+border:1px solid var(--line);
+padding:15px;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.partner-head{
+display:flex;
+justify-content:space-between;
+gap:10px;
+}
+
+.empty{
+text-align:center;
+color:var(--muted);
+padding:30px;
+}
+
+@media(max-width:1000px){
+
+.cards{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:750px){
+
+.sidebar{
+position:relative;
+width:100%;
+height:auto;
+}
+
+.main{
+margin-left:0;
+}
+
+.app{
+display:none;
+}
+
+.grid2{
+grid-template-columns:1fr;
+}
+
+.full{
+grid-column:auto;
+}
+
+}
+
+@media(max-width:550px){
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.topbar{
+align-items:flex-start;
+flex-direction:column;
+}
+
+.mode{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+LOGIN
+===================================================== -->
+
+<div id="loginScreen" class="login-screen">
+
+<div class="login-box">
+
+<div class="logo">
+HIMALAYAN<span>GATEWAY</span>
+</div>
+
+<div class="login-sub">
+Admin Panel • Quotation & Partner Management
+</div>
+
+<label>
+Username
+</label>
+
+<input
+id="loginUser"
+value="admin"
+autocomplete="username">
+
+<label>
+Password
+</label>
+
+<input
+id="loginPass"
+type="password"
+placeholder="Enter password"
+autocomplete="current-password">
+
+<button
+class="btn gold"
+style="width:100%"
+onclick="login()">
+
+Login to Dashboard
+
+</button>
+
+<div id="loginError" class="login-error"></div>
+
+<div class="small" style="margin-top:18px">
+Prototype login only — not suitable for securing
+real customer data.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+APP
+===================================================== -->
+
+<div id="app" class="app">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div class="side-logo">
+
+<div class="logo">
+HIMALAYAN<span>GATEWAY</span>
+</div>
+
+<div class="small">
+ADMIN PANEL
+</div>
+
+</div>
+
+
+<button
+class="nav-btn active"
+onclick="showPage('dashboard',this)">
+📊 Dashboard
+</button>
+
+
+<button
+class="nav-btn"
+onclick="showPage('quotation',this)">
+🧾 New Quotation
+</button>
+
+
+<button
+class="nav-btn"
+onclick="showPage('customers',this)">
+👤 Customers
+</button>
+
+
+<button
+class="nav-btn"
+onclick="showPage('partners',this)">
+🤝 Partners
+</button>
+
+
+<button
+class="nav-btn"
+onclick="showPage('bookings',this)">
+📦 Bookings
+</button>
+
+
+<button
+class="nav-btn"
+onclick="logout()">
+🚪 Logout
+</button>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+<!-- =====================================================
+DASHBOARD
+===================================================== -->
+
+<section id="dashboard" class="page">
+
+<div class="topbar">
+
+<div>
+
+<h1>Dashboard</h1>
+
+<p>
+Himalayan Gateway — internal management
+</p>
+
+</div>
+
+<button
+class="btn gold"
+onclick="showPage('quotation')">
+
++ New Quotation
+
+</button>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-title">
+TOTAL CUSTOMERS
+</div>
+
+<div
+id="statCustomers"
+class="card-value">
+0
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+TOTAL QUOTATIONS
+</div>
+
+<div
+id="statQuotes"
+class="card-value">
+0
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+PARTNERS
+</div>
+
+<div
+id="statPartners"
+class="card-value">
+0
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+ESTIMATED MARGIN
+</div>
+
+<div
+id="statMargin"
+class="card-value">
+₹0
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2>
+Recent Quotations
+</h2>
+
+<div
+id="recentQuotes">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+NEW QUOTATION
+===================================================== -->
+
+<section
+id="quotation"
+class="page hidden">
+
+<div class="topbar">
+
+<div>
+
+<h1>Quotation Manager</h1>
+
+<p>
+Create internal costing and customer price
+</p>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2>
+Booking Type
+</h2>
+
+
+<div class="mode">
+
+
+<label>
+
+<input
+type="radio"
+name="bookingMode"
+value="direct"
+checked
+onchange="changeMode()">
+
+<div class="mode-box">
+
+<div class="mode-title">
+DIRECT BOOKING
+</div>
+
+<div class="mode-text">
+Your own/direct supplier arrangement
+</div>
+
+</div>
+
+</label>
+
+
+<label>
+
+<input
+type="radio"
+name="bookingMode"
+value="partner"
+onchange="changeMode()">
+
+<div class="mode-box">
+
+<div class="mode-title">
+PARTNER BOOKING
+</div>
+
+<div class="mode-text">
+Partner provides net quotation
+</div>
+
+</div>
+
+</label>
+
+</div>
+
+
+<div class="grid2">
+
+
+<div>
+
+<label>
+Customer Name *
+</label>
+
+<input
+id="qCustomer"
+placeholder="Customer name">
+
+</div>
+
+
+<div>
+
+<label>
+Customer WhatsApp *
+</label>
+
+<input
+id="qPhone"
+placeholder="9876543210">
+
+</div>
+
+
+<div>
+
+<label>
+Destination
+</label>
+
+<input
+id="qDestination"
+value="Bhutan">
+
+</div>
+
+
+<div>
+
+<label>
+Travel Date
+</label>
+
+<input
+id="qDate"
+type="date">
+
+</div>
+
+
+<div>
+
+<label>
+Travellers
+</label>
+
+<input
+id="qPax"
+type="number"
+value="2"
+min="1">
+
+</div>
+
+
+<div>
+
+<label>
+Nights
+</label>
+
+<input
+id="qNights"
+type="number"
+value="3"
+min="0">
+
+</div>
+
+
+<div id="partnerField"
+class="full hidden">
+
+<label>
+Select Partner
+</label>
+
+<select id="qPartner">
+<option value="">
+Choose Partner
+</option>
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Base / Partner Cost
+</label>
+
+<input
+id="qCost"
+type="number"
+value="0"
+min="0"
+oninput="calculateQuote()">
+
+</div>
+
+
+<div>
+
+<label>
+Your Margin
+</label>
+
+<input
+id="qMargin"
+type="number"
+value="0"
+min="0"
+oninput="calculateQuote()">
+
+</div>
+
+
+<div>
+
+<label>
+Customer Price
+</label>
+
+<input
+id="qPrice"
+type="number"
+value="0"
+min="0"
+oninput="calculateQuote()">
+
+</div>
+
+
+<div>
+
+<label>
+Quotation Status
+</label>
+
+<select id="qStatus">
+
+<option>Draft</option>
+<option>Sent</option>
+<option>Confirmed</option>
+<option>Cancelled</option>
+
+</select>
+
+</div>
+
+
+<div class="full">
+
+<label>
+Internal Notes
+</label>
+
+<textarea
+id="qNotes"
+placeholder="Partner quotation details, supplier terms, special requirements...">
+</textarea>
+
+</div>
+
+</div>
+
+
+<div class="result-box">
+
+<div class="result-row">
+
+<span>
+Base / Partner Cost
+</span>
+
+<strong id="showCost">
+₹0
+</strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span>
+Your Margin
+</span>
+
+<strong id="showMargin">
+₹0
+</strong>
+
+</div>
+
+
+<div class="result-total">
+
+<span>
+Customer Price
+</span>
+
+<span id="showPrice">
+₹0
+</span>
+
+</div>
+
+</div>
+
+
+<br>
+
+<button
+class="btn gold"
+onclick="saveQuotation()">
+
+💾 Save Quotation
+
+</button>
+
+
+<button
+class="btn green"
+onclick="whatsappQuotation()">
+
+📲 WhatsApp Customer
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+CUSTOMERS
+===================================================== -->
+
+<section
+id="customers"
+class="page hidden">
+
+<div class="topbar">
+
+<div>
+
+<h1>Customers</h1>
+
+<p>
+Customer enquiries and quotations
+</p>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Customer
+</th>
+
+<th>
+WhatsApp
+</th>
+
+<th>
+Destination
+</th>
+
+<th>
+Travellers
+</th>
+
+<th>
+Price
+</th>
+
+<th>
+Status
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="customerTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+PARTNERS
+===================================================== -->
+
+<section
+id="partners"
+class="page hidden">
+
+<div class="topbar">
+
+<div>
+
+<h1>Partner Network</h1>
+
+<p>
+Manage your local operators and suppliers
+</p>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2>
+Add Partner
+</h2>
+
+
+<div class="grid2">
+
+
+<div>
+
+<label>
+Partner / Company Name
+</label>
+
+<input
+id="pName"
+placeholder="ABC Tours">
+
+</div>
+
+
+<div>
+
+<label>
+Contact Person
+</label>
+
+<input
+id="pContact"
+placeholder="Contact name">
+
+</div>
+
+
+<div>
+
+<label>
+WhatsApp
+</label>
+
+<input
+id="pPhone"
+placeholder="9876543210">
+
+</div>
+
+
+<div>
+
+<label>
+Destination / Area
+</label>
+
+<input
+id="pArea"
+placeholder="Bhutan">
+
+</div>
+
+
+<div>
+
+<label>
+Partner Type
+</label>
+
+<select id="pType">
+
+<option>Tour Operator</option>
+<option>Hotel</option>
+<option>Vehicle Provider</option>
+<option>Guide</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Status
+</label>
+
+<select id="pStatus">
+
+<option>Active</option>
+<option>Inactive</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<button
+class="btn gold"
+onclick="addPartner()">
+
++ Add Partner
+
+</button>
+
+</div>
+
+
+<div class="panel">
+
+<h2>
+Partner List
+</h2>
+
+<div id="partnerList">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+BOOKINGS
+===================================================== -->
+
+<section
+id="bookings"
+class="page hidden">
+
+<div class="topbar">
+
+<div>
+
+<h1>Bookings</h1>
+
+<p>
+All saved quotation records
+</p>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Quotation
+</th>
+
+<th>
+Customer
+</th>
+
+<th>
+Type
+</th>
+
+<th>
+Partner
+</th>
+
+<th>
+Cost
+</th>
+
+<th>
+Margin
+</th>
+
+<th>
+Customer Price
+</th>
+
+<th>
+Status
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="bookingTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+LOGIN
+===================================================== */
+
+function login(){
+
+const user =
+document.getElementById('loginUser').value;
+
+const pass =
+document.getElementById('loginPass').value;
+
+
+/*
+Prototype credentials.
+CHANGE THESE BEFORE USE.
+*/
+
+if(
+user === 'admin' &&
+pass === 'himalayan123'
+){
+
+document.getElementById(
+'loginScreen'
+).style.display='none';
+
+document.getElementById(
+'app'
+).style.display='block';
+
+refreshAll();
+
+}else{
+
+document.getElementById(
+'loginError'
+).textContent =
+'Invalid username or password.';
+
+}
+
+}
+
+
+function logout(){
+
+location.reload();
+
+}
+
+
+/* =====================================================
+PAGE NAVIGATION
+===================================================== */
+
+function showPage(id,button){
+
+document
+.querySelectorAll('.page')
+.forEach(p=>
+p.classList.add('hidden')
+);
+
+
+document
+.getElementById(id)
+.classList.remove('hidden');
+
+
+if(button){
+
+document
+.querySelectorAll('.nav-btn')
+.forEach(b=>
+b.classList.remove('active')
+);
+
+button.classList.add('active');
+
+}
+
+
+if(id==='dashboard')
+refreshDashboard();
+
+if(id==='customers')
+displayCustomers();
+
+if(id==='partners')
+displayPartners();
+
+if(id==='bookings')
+displayBookings();
+
+}
+
+
+/* =====================================================
+HELPERS
+===================================================== */
+
+function money(n){
+
+return '₹' +
+Number(n||0)
+.toLocaleString('en-IN');
+
+}
+
+
+function getPartners(){
+
+return JSON.parse(
+localStorage.getItem(
+'hg_partners'
+)||'[]'
+);
+
+}
+
+
+function getQuotes(){
+
+return JSON.parse(
+localStorage.getItem(
+'hg_quotes'
+)||'[]'
+);
+
+}
+
+
+function esc(s){
+
+return String(s||'')
+.replace(
+/[&<>"']/g,
+m=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#039;'
+}[m])
+);
+
+}
+
+
+/* =====================================================
+BOOKING MODE
+===================================================== */
+
+function changeMode(){
+
+const mode =
+document.querySelector(
+'input[name="bookingMode"]:checked'
+).value;
+
+
+const partnerField =
+document.getElementById(
+'partnerField'
+);
+
+
+if(mode==='partner'){
+
+partnerField.classList.remove(
+'hidden'
+);
+
+loadPartnerSelect();
+
+}else{
+
+partnerField.classList.add(
+'hidden'
+);
+
+}
+
+
+calculateQuote();
+
+}
+
+
+/* =====================================================
+CALCULATE
+===================================================== */
+
+function calculateQuote(){
+
+const cost =
+Number(
+document.getElementById(
+'qCost'
+).value||0
+);
+
+
+const margin =
+Number(
+document.getElementById(
+'qMargin'
+).value||0
+);
+
+
+const price =
+document.getElementById(
+'qPrice'
+);
+
+
+if(
+document.activeElement !== price
+){
+
+price.value =
+cost + margin;
+
+}
+
+
+document.getElementById(
+'showCost'
+).textContent =
+money(cost);
+
+
+document.getElementById(
+'showMargin'
+).textContent =
+money(margin);
+
+
+document.getElementById(
+'showPrice'
+).textContent =
+money(price.value);
+
+}
+
+
+/* =====================================================
+PARTNER SELECT
+===================================================== */
+
+function loadPartnerSelect(){
+
+const select =
+document.getElementById(
+'qPartner'
+);
+
+
+const partners =
+getPartners();
+
+
+select.innerHTML =
+'<option value="">Choose Partner</option>';
+
+
+partners.forEach(p=>{
+
+select.innerHTML += `
+
+<option value="${esc(p.id)}">
+
+${esc(p.name)}
+—
+${esc(p.area)}
+
+</option>
+
+`;
+
+});
+
+}
+
+
+/* =====================================================
+ADD PARTNER
+===================================================== */
+
+function addPartner(){
+
+const name =
+document.getElementById(
+'pName'
+).value.trim();
+
+
+if(!name){
+
+alert(
+'Please enter partner name.'
+);
+
+return;
+
+}
+
+
+const partners =
+getPartners();
+
+
+partners.push({
+
+id:
+'P' +
+Date.now(),
+
+name:name,
+
+contact:
+document.getElementById(
+'pContact'
+).value,
+
+phone:
+document.getElementById(
+'pPhone'
+).value,
+
+area:
+document.getElementById(
+'pArea'
+).value,
+
+type:
+document.getElementById(
+'pType'
+).value,
+
+status:
+document.getElementById(
+'pStatus'
+).value,
+
+created:
+new Date().toLocaleString(
+'en-IN'
+)
+
+});
+
+
+localStorage.setItem(
+'hg_partners',
+JSON.stringify(partners)
+);
+
+
+document.getElementById(
+'pName'
+).value='';
+
+document.getElementById(
+'pContact'
+).value='';
+
+document.getElementById(
+'pPhone'
+).value='';
+
+document.getElementById(
+'pArea'
+).value='';
+
+
+displayPartners();
+
+loadPartnerSelect();
+
+
+alert(
+'Partner added successfully.'
+);
+
+}
+
+
+/* =====================================================
+DISPLAY PARTNERS
+===================================================== */
+
+function displayPartners(){
+
+const partners =
+getPartners();
+
+
+const box =
+document.getElementById(
+'partnerList'
+);
+
+
+if(!partners.length){
+
+box.innerHTML =
+'<div class="empty">No partners added yet.</div>';
+
+return;
+
+}
+
+
+box.innerHTML =
+partners.map(p=>`
+
+<div class="partner-card">
+
+<div class="partner-head">
+
+<div>
+
+<strong>
+${esc(p.name)}
+</strong>
+
+<br>
+
+<span class="small">
+${esc(p.type)} •
+${esc(p.area)}
+</span>
+
+</div>
+
+<div>
+
+<span class="badge green">
+${esc(p.status)}
+</span>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="small">
+
+👤 ${esc(p.contact || '—')}
+
+<br>
+
+📱 ${esc(p.phone || '—')}
+
+</div>
+
+</div>
+
+`).join('');
+
+}
+
+
+/* =====================================================
+SAVE QUOTATION
+===================================================== */
+
+function saveQuotation(){
+
+const customer =
+document.getElementById(
+'qCustomer'
+).value.trim();
+
+
+if(!customer){
+
+alert(
+'Please enter customer name.'
+);
+
+return;
+
+}
+
+
+const mode =
+document.querySelector(
+'input[name="bookingMode"]:checked'
+).value;
+
+
+const cost =
+Number(
+document.getElementById(
+'qCost'
+).value||0
+);
+
+
+const margin =
+Number(
+document.getElementById(
+'qMargin'
+).value||0
+);
+
+
+const price =
+Number(
+document.getElementById(
+'qPrice'
+).value||0
+);
+
+
+const partners =
+getPartners();
+
+
+const partner =
+partners.find(
+p=>p.id ===
+document.getElementById(
+'qPartner'
+).value
+);
+
+
+const quote={
+
+id:
+'HG-' +
+new Date().getFullYear() +
+'-' +
+String(
+Date.now()
+).slice(-6),
+
+customer:customer,
+
+phone:
+document.getElementById(
+'qPhone'
+).value,
+
+destination:
+document.getElementById(
+'qDestination'
+).value,
+
+date:
+document.getElementById(
+'qDate'
+).value,
+
+pax:
+document.getElementById(
+'qPax'
+).value,
+
+nights:
+document.getElementById(
+'qNights'
+).value,
+
+mode:mode,
+
+partner:
+partner ?
+partner.name :
+'Direct',
+
+partnerId:
+partner ?
+partner.id :
+'',
+
+cost:cost,
+
+margin:margin,
+
+price:price,
+
+status:
+document.getElementById(
+'qStatus'
+).value,
+
+notes:
+document.getElementById(
+'qNotes'
+).value,
+
+created:
+new Date().toLocaleString(
+'en-IN'
+)
+
+};
+
+
+const quotes =
+getQuotes();
+
+
+quotes.unshift(quote);
+
+
+localStorage.setItem(
+'hg_quotes',
+JSON.stringify(quotes)
+);
+
+
+refreshAll();
+
+
+alert(
+'Quotation saved successfully.'
+);
+
+}
+
+
+/* =====================================================
+WHATSAPP CUSTOMER
+===================================================== */
+
+function whatsappQuotation(){
+
+const name =
+document.getElementById(
+'qCustomer'
+).value.trim();
+
+
+const phoneInput =
+document.getElementById(
+'qPhone'
+).value.trim();
+
+
+if(!name){
+
+alert(
+'Enter customer name first.'
+);
+
+return;
+
+}
+
+
+if(!phoneInput){
+
+alert(
+'Enter customer WhatsApp number.'
+);
+
+return;
+
+}
+
+
+let phone =
+phoneInput.replace(/\D/g,'');
+
+
+if(phone.length===10){
+
+phone='91'+phone;
+
+}
+
+
+if(phone.length<11){
+
+alert(
+'Enter a valid WhatsApp number.'
+);
+
+return;
+
+}
+
+
+const price =
+Number(
+document.getElementById(
+'qPrice'
+).value||0
+);
+
+
+const message =
+
+`🌄 *HIMALAYAN GATEWAY*
+
+Dear ${name},
+
+Thank you for choosing Himalayan Gateway.
+
+━━━━━━━━━━━━━━
+📋 *TRAVEL QUOTATION*
+━━━━━━━━━━━━━━
+
+📍 Destination:
+${document.getElementById('qDestination').value}
+
+📅 Travel Date:
+${document.getElementById('qDate').value || 'Flexible'}
+
+👥 Travellers:
+${document.getElementById('qPax').value}
+
+🌙 Nights:
+${document.getElementById('qNights').value}
+
+━━━━━━━━━━━━━━
+
+💰 *TOTAL PACKAGE PRICE*
+
+*${money(price)}*
+
+━━━━━━━━━━━━━━
+
+This quotation is subject to availability
+and final booking confirmation.
+
+📞 Himalayan Gateway
+📍 Jaigaon Bahubazar, West Bengal
+💬 +91 9117740558
+📧 bhutan_tourism@proton.me
+
+Thank you for choosing
+*Himalayan Gateway* 🌄`;
+
+
+window.open(
+'https://wa.me/' +
+phone +
+'?text=' +
+encodeURIComponent(message),
+'_blank'
+);
+
+}
+
+
+/* =====================================================
+CUSTOMERS
+===================================================== */
+
+function displayCustomers(){
+
+const quotes =
+getQuotes();
+
+
+const tbody =
+document.getElementById(
+'customerTable'
+);
+
+
+if(!quotes.length){
+
+tbody.innerHTML =
+`
+<tr>
+<td colspan="6" class="empty">
+No customers yet.
+</td>
+</tr>
+`;
+
+return;
+
+}
+
+
+tbody.innerHTML =
+quotes.map(q=>`
+
+<tr>
+
+<td>
+<strong>
+${esc(q.customer)}
+</strong>
+</td>
+
+<td>
+${esc(q.phone)}
+</td>
+
+<td>
+${esc(q.destination)}
+</td>
+
+<td>
+${esc(q.pax)}
+</td>
+
+<td>
+${money(q.price)}
+</td>
+
+<td>
+
+<span class="badge gold">
+${esc(q.status)}
+</span>
+
+</td>
+
+</tr>
+
+`).join('');
+
+}
+
+
+/* =====================================================
+BOOKINGS
+===================================================== */
+
+function displayBookings(){
+
+const quotes =
+getQuotes();
+
+
+const tbody =
+document.getElementById(
+'bookingTable'
+);
+
+
+if(!quotes.length){
+
+tbody.innerHTML =
+`
+<tr>
+<td colspan="8" class="empty">
+No quotations yet.
+</td>
+</tr>
+`;
+
+return;
+
+}
+
+
+tbody.innerHTML =
+quotes.map(q=>`
+
+<tr>
+
+<td>
+${esc(q.id)}
+</td>
+
+<td>
+${esc(q.customer)}
+</td>
+
+<td>
+
+<span class="badge ${
+q.mode==='partner'
+?'blue'
+:'green'
+}">
+
+${q.mode==='partner'
+?'Partner'
+:'Direct'}
+
+</span>
+
+</td>
+
+<td>
+${esc(q.partner)}
+</td>
+
+<td>
+${money(q.cost)}
+</td>
+
+<td>
+<strong>
+${money(q.margin)}
+</strong>
+</td>
+
+<td>
+<strong>
+${money(q.price)}
+</strong>
+</td>
+
+<td>
+${esc(q.status)}
+</td>
+
+</tr>
+
+`).join('');
+
+}
+
+
+/* =====================================================
+DASHBOARD
+===================================================== */
+
+function refreshDashboard(){
+
+const quotes =
+getQuotes();
+
+const partners =
+getPartners();
+
+
+const customers =
+new Set(
+quotes.map(q=>q.customer)
+);
+
+
+const margin =
+quotes.reduce(
+(sum,q)=>
+sum +
+Number(q.margin||0),
+0
+);
+
+
+document.getElementById(
+'statCustomers'
+).textContent =
+customers.size;
+
+
+document.getElementById(
+'statQuotes'
+).textContent =
+quotes.length;
+
+
+document.getElementById(
+'statPartners'
+).textContent =
+partners.length;
+
+
+document.getElementById(
+'statMargin'
+).textContent =
+money(margin);
+
+
+const recent =
+document.getElementById(
+'recentQuotes'
+);
+
+
+if(!quotes.length){
+
+recent.innerHTML =
+'<div class="empty">No quotations yet.</div>';
+
+return;
+
+}
+
+
+recent.innerHTML =
+quotes.slice(0,8).map(q=>`
+
+<div class="lead">
+
+<strong>
+${esc(q.id)}
+</strong>
+
+—
+
+${esc(q.customer)}
+
+<br>
+
+<span class="small">
+
+${esc(q.destination)}
+•
+
+${q.mode==='partner'
+?'Partner: '+esc(q.partner)
+:'Direct Booking'}
+
+•
+
+Customer Price:
+${money(q.price)}
+
+•
+
+Margin:
+${money(q.margin)}
+
+</span>
+
+</div>
+
+`).join('');
+
+}
+
+
+/* =====================================================
+REFRESH EVERYTHING
+===================================================== */
+
+function refreshAll(){
+
+refreshDashboard();
+
+displayCustomers();
+
+displayPartners();
+
+displayBookings();
+
+loadPartnerSelect();
+
+calculateQuote();
+
+}
+
+</script>
+
+</body>
+</html>
