@@ -376,6 +376,151 @@ font-size:11px;
 color:var(--muted);
 }
 
+/* =====================================================
+PACKAGES
+===================================================== */
+
+.package-toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
+}
+
+.package-toolbar-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.package-form{
+  background:#071820;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:18px;
+  margin-bottom:20px;
+}
+
+.package-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.package-card{
+  background:#071820;
+  border:1px solid var(--line);
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.package-image{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  display:block;
+  background:#102832;
+}
+
+.package-image-placeholder{
+  height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#102832;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.package-body{
+  padding:16px;
+}
+
+.package-head{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.package-title{
+  font-size:17px;
+  font-weight:900;
+}
+
+.package-meta{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:5px;
+}
+
+.package-description{
+  color:#c8d7db;
+  font-size:12px;
+  line-height:1.6;
+  margin:12px 0;
+}
+
+.package-price{
+  color:var(--gold);
+  font-size:18px;
+  font-weight:900;
+}
+
+.package-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.package-actions .btn{
+  padding:8px 11px;
+  font-size:11px;
+}
+
+.package-checks{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  margin:3px 0 14px;
+}
+
+.package-check{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#c8d7db;
+  font-size:12px;
+}
+
+.package-check input{
+  width:auto;
+  margin:0;
+}
+
+.package-editor-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.package-status{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:800px){
+  .package-list{
+    grid-template-columns:1fr;
+  }
+}
+
+
 .partner-card{
 background:#071820;
 border:1px solid var(--line);
@@ -466,16 +611,17 @@ HIMALAYAN<span>GATEWAY</span>
 </div>
 
 <div class="login-sub">
-Admin Panel • Quotation & Partner Management
+Admin Panel • Secure Supabase Login
 </div>
 
 <label>
-Username
+Admin Email
 </label>
 
 <input
 id="loginUser"
-value="admin"
+type="email"
+placeholder="admin@example.com"
 autocomplete="username">
 
 <label>
@@ -500,8 +646,7 @@ Login to Dashboard
 <div id="loginError" class="login-error"></div>
 
 <div class="small" style="margin-top:18px">
-Prototype login only — not suitable for securing
-real customer data.
+Secure login is handled by Supabase Authentication.
 </div>
 
 </div>
@@ -558,6 +703,13 @@ onclick="showPage('customers',this)">
 class="nav-btn"
 onclick="showPage('partners',this)">
 🤝 Partners
+</button>
+
+
+<button
+class="nav-btn"
+onclick="showPage('packages',this)">
+🏔️ Packages
 </button>
 
 
@@ -683,6 +835,19 @@ Recent Quotations
 
 <div
 id="recentQuotes">
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2>
+Package Overview
+</h2>
+
+<div id="packageDashboardSummary" class="small">
+Loading package count...
 </div>
 
 </div>
@@ -1244,6 +1409,231 @@ Partner List
 
 
 <!-- =====================================================
+PACKAGES
+===================================================== -->
+
+<section
+id="packages"
+class="page hidden">
+
+<div class="topbar">
+
+<div>
+
+<h1>Package Manager</h1>
+
+<p>
+Create and manage live Himalayan Gateway tour packages
+</p>
+
+</div>
+
+<button
+class="btn gold"
+onclick="openPackageForm()">
+
++ Add Package
+
+</button>
+
+</div>
+
+<div id="packageEditor" class="package-form hidden">
+
+<div class="package-editor-title">
+
+<h2 id="packageFormTitle">Add Package</h2>
+
+<button
+class="btn"
+type="button"
+onclick="closePackageForm()">
+Close
+</button>
+
+</div>
+
+<br>
+
+<div class="grid2">
+
+<div>
+
+<label>Package Name *</label>
+
+<input
+id="pkgTitle"
+placeholder="Bhutan 5 Nights 6 Days">
+
+</div>
+
+<div>
+
+<label>Destination *</label>
+
+<input
+id="pkgDestination"
+placeholder="Bhutan">
+
+</div>
+
+<div>
+
+<label>Duration *</label>
+
+<input
+id="pkgDuration"
+placeholder="5 Nights / 6 Days">
+
+</div>
+
+<div>
+
+<label>Starting Price (₹)</label>
+
+<input
+id="pkgPrice"
+type="number"
+min="0"
+value="0">
+
+</div>
+
+<div class="full">
+
+<label>Cover Image URL</label>
+
+<input
+id="pkgImage"
+type="url"
+placeholder="https://example.com/package-image.jpg">
+
+</div>
+
+<div class="full">
+
+<label>Short Description</label>
+
+<textarea
+id="pkgDescription"
+placeholder="A short package description for the website..."></textarea>
+
+</div>
+
+<div class="full">
+
+<label>Day-wise Itinerary</label>
+
+<textarea
+id="pkgItinerary"
+placeholder="Day 1: Jaigaon - Phuentsholing
+Day 2: Phuentsholing - Thimphu
+Day 3: Thimphu sightseeing"></textarea>
+
+</div>
+
+<div class="full">
+
+<label>Inclusions</label>
+
+<textarea
+id="pkgInclusions"
+placeholder="Hotel accommodation
+Breakfast
+Private vehicle"></textarea>
+
+</div>
+
+<div class="full">
+
+<label>Exclusions</label>
+
+<textarea
+id="pkgExclusions"
+placeholder="Personal expenses
+Travel insurance
+Lunch and dinner"></textarea>
+
+</div>
+
+</div>
+
+<div class="package-checks">
+
+<label class="package-check">
+<input id="pkgFeatured" type="checkbox">
+⭐ Featured package
+</label>
+
+<label class="package-check">
+<input id="pkgActive" type="checkbox" checked>
+🟢 Active on website
+</label>
+
+</div>
+
+<button
+id="packageSaveBtn"
+class="btn gold"
+onclick="savePackage()">
+
+💾 Save Package
+
+</button>
+
+<button
+class="btn"
+onclick="closePackageForm()">
+
+Cancel
+
+</button>
+
+<div id="packageMessage" class="small" style="margin-top:12px"></div>
+
+</div>
+
+<div class="panel">
+
+<div class="package-toolbar">
+
+<div>
+
+<h2 style="margin-bottom:4px">All Packages</h2>
+
+<div class="small">
+Active packages are available to the public website.
+</div>
+
+</div>
+
+<div class="package-toolbar-actions">
+
+<button
+class="btn"
+onclick="loadPackages()">
+↻ Refresh
+</button>
+
+</div>
+
+</div>
+
+<div id="packageList" class="package-list">
+
+<div class="empty">
+Loading packages...
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
 BOOKINGS
 ===================================================== -->
 
@@ -1330,58 +1720,129 @@ Status
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+
+/* =====================================================
+SUPABASE
+===================================================== */
+
+const SUPABASE_URL = 'https://nqulaiyzwynywjkxciuf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5xdWxhaXl6d3d5d2preHZjaXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMzc0ODUsImV4cCI6MjEwNDgxMzQ4NX0.tQePFhz0drqu61g0jnxty0zzAcIS6ZygSbHqV1Dw4eE';
+
+const { createClient } = window.supabase;
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* =====================================================
 LOGIN
 ===================================================== */
 
-function login(){
+async function login(){
 
-const user =
-document.getElementById('loginUser').value;
+  const email =
+    document.getElementById('loginUser').value.trim();
 
-const pass =
-document.getElementById('loginPass').value;
+  const password =
+    document.getElementById('loginPass').value;
 
+  const errorBox =
+    document.getElementById('loginError');
 
-/*
-Prototype credentials.
-CHANGE THESE BEFORE USE.
-*/
+  errorBox.textContent = '';
 
-if(
-user === 'admin' &&
-pass === 'himalayan123'
-){
+  if(!email || !password){
 
-document.getElementById(
-'loginScreen'
-).style.display='none';
+    errorBox.textContent =
+      'Please enter admin email and password.';
 
-document.getElementById(
-'app'
-).style.display='block';
+    return;
 
-refreshAll();
+  }
 
-}else{
+  try{
 
-document.getElementById(
-'loginError'
-).textContent =
-'Invalid username or password.';
+    const {data,error} =
+      await supabaseClient.auth.signInWithPassword({
+        email:email,
+        password:password
+      });
+
+    if(error) throw error;
+
+    if(!data.session){
+
+      throw new Error('Login session could not be created.');
+
+    }
+
+    showAdminApp();
+
+  }catch(error){
+
+    console.error('Login error:',error);
+
+    errorBox.textContent =
+      error.message || 'Invalid email or password.';
+
+  }
 
 }
 
+function showAdminApp(){
+
+  document.getElementById(
+    'loginScreen'
+  ).style.display='none';
+
+  document.getElementById(
+    'app'
+  ).style.display='block';
+
+  refreshAll();
+
 }
 
+async function logout(){
 
-function logout(){
+  try{
+    await supabaseClient.auth.signOut();
+  }catch(error){
+    console.error('Logout error:',error);
+  }
 
-location.reload();
+  location.reload();
 
 }
+
+/* =====================================================
+AUTH SESSION
+===================================================== */
+
+async function restoreSession(){
+
+  try{
+
+    const {data,error} =
+      await supabaseClient.auth.getSession();
+
+    if(error) throw error;
+
+    if(data.session){
+
+      showAdminApp();
+
+    }
+
+  }catch(error){
+
+    console.error('Session restore error:',error);
+
+  }
+
+}
+
+restoreSession();
 
 
 /* =====================================================
@@ -1423,6 +1884,9 @@ displayCustomers();
 
 if(id==='partners')
 displayPartners();
+
+if(id==='packages')
+loadPackages();
 
 if(id==='bookings')
 displayBookings();
@@ -2161,6 +2625,429 @@ ${esc(q.status)}
 
 
 /* =====================================================
+PACKAGES
+===================================================== */
+
+let editingPackageId = null;
+
+function packageArrayFromText(value){
+  return String(value || '')
+    .split(/\r?\n/)
+    .map(x => x.trim())
+    .filter(Boolean);
+}
+
+function packageTextFromArray(value){
+  if(Array.isArray(value)) return value.join('\n');
+  if(typeof value === 'string') return value;
+  return '';
+}
+
+function openPackageForm(pkg=null){
+
+  editingPackageId = pkg ? pkg.id : null;
+
+  document.getElementById('packageEditor').classList.remove('hidden');
+
+  document.getElementById('packageFormTitle').textContent =
+    pkg ? 'Edit Package' : 'Add Package';
+
+  document.getElementById('packageSaveBtn').textContent =
+    pkg ? '💾 Update Package' : '💾 Save Package';
+
+  document.getElementById('packageMessage').textContent = '';
+
+  document.getElementById('pkgTitle').value =
+    pkg ? (pkg.title || '') : '';
+
+  document.getElementById('pkgDestination').value =
+    pkg ? (pkg.destination || '') : '';
+
+  document.getElementById('pkgDuration').value =
+    pkg ? (pkg.duration || '') : '';
+
+  document.getElementById('pkgPrice').value =
+    pkg ? Number(pkg.price || 0) : 0;
+
+  document.getElementById('pkgImage').value =
+    pkg ? (pkg.cover_image || '') : '';
+
+  document.getElementById('pkgDescription').value =
+    pkg ? (pkg.short_description || '') : '';
+
+  document.getElementById('pkgItinerary').value =
+    pkg ? packageTextFromArray(pkg.itinerary) : '';
+
+  document.getElementById('pkgInclusions').value =
+    pkg ? packageTextFromArray(pkg.inclusions) : '';
+
+  document.getElementById('pkgExclusions').value =
+    pkg ? packageTextFromArray(pkg.exclusions) : '';
+
+  document.getElementById('pkgFeatured').checked =
+    pkg ? !!pkg.featured : false;
+
+  document.getElementById('pkgActive').checked =
+    pkg ? pkg.active !== false : true;
+
+  document.getElementById('packageEditor')
+    .scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function closePackageForm(){
+
+  editingPackageId = null;
+
+  document.getElementById('packageEditor').classList.add('hidden');
+
+  document.getElementById('packageMessage').textContent = '';
+
+}
+
+function getPackageFormData(){
+
+  return {
+    title: document.getElementById('pkgTitle').value.trim(),
+    destination: document.getElementById('pkgDestination').value.trim(),
+    duration: document.getElementById('pkgDuration').value.trim(),
+    price: Number(document.getElementById('pkgPrice').value || 0),
+    cover_image: document.getElementById('pkgImage').value.trim(),
+    short_description: document.getElementById('pkgDescription').value.trim(),
+    itinerary: packageArrayFromText(
+      document.getElementById('pkgItinerary').value
+    ),
+    inclusions: packageArrayFromText(
+      document.getElementById('pkgInclusions').value
+    ),
+    exclusions: packageArrayFromText(
+      document.getElementById('pkgExclusions').value
+    ),
+    featured: document.getElementById('pkgFeatured').checked,
+    active: document.getElementById('pkgActive').checked
+  };
+
+}
+
+async function savePackage(){
+
+  const data = getPackageFormData();
+
+  if(!data.title){
+    alert('Please enter package name.');
+    return;
+  }
+
+  if(!data.destination){
+    alert('Please enter destination.');
+    return;
+  }
+
+  if(!data.duration){
+    alert('Please enter duration.');
+    return;
+  }
+
+  const message =
+    document.getElementById('packageMessage');
+
+  message.textContent = 'Saving package...';
+
+  try{
+
+    let result;
+
+    if(editingPackageId){
+
+      result = await supabaseClient
+        .from('packages')
+        .update({
+          ...data,
+          updated_at:new Date().toISOString()
+        })
+        .eq('id', editingPackageId)
+        .select()
+        .single();
+
+    }else{
+
+      result = await supabaseClient
+        .from('packages')
+        .insert([data])
+        .select()
+        .single();
+
+    }
+
+    if(result.error) throw result.error;
+
+    message.textContent =
+      editingPackageId
+      ? 'Package updated successfully.'
+      : 'Package created successfully.';
+
+    await loadPackages();
+
+    setTimeout(() => {
+      closePackageForm();
+    }, 500);
+
+  }catch(error){
+
+    console.error('Package save error:', error);
+
+    message.textContent =
+      'Could not save package: ' + (error.message || 'Unknown error');
+
+    alert(
+      'Could not save package.\n\n' +
+      (error.message || 'Unknown error') +
+      '\n\nIf RLS is enabled, make sure the required authenticated policies are created in Supabase.'
+    );
+
+  }
+
+}
+
+async function loadPackages(){
+
+  const box =
+    document.getElementById('packageList');
+
+  if(!box) return;
+
+  box.innerHTML =
+    '<div class="empty">Loading packages...</div>';
+
+  try{
+
+    /*
+      The public policy currently allows active packages
+      to be read. This query also requests inactive packages
+      for the admin panel, so authenticated admin policies
+      should be added before using inactive package management.
+    */
+
+    const {data,error} = await supabaseClient
+      .from('packages')
+      .select('*')
+      .order('created_at',{ascending:false});
+
+    if(error) throw error;
+
+    renderPackages(data || []);
+
+  }catch(error){
+
+    console.error('Package load error:', error);
+
+    box.innerHTML = `
+      <div class="empty">
+        Unable to load packages.<br>
+        <span class="small">${esc(error.message || 'Unknown error')}</span>
+      </div>
+    `;
+
+  }
+
+}
+
+function renderPackages(packages){
+
+  const box =
+    document.getElementById('packageList');
+
+  if(!packages.length){
+
+    box.innerHTML =
+      '<div class="empty">No packages yet. Click + Add Package to create your first package.</div>';
+
+    return;
+
+  }
+
+  box.innerHTML = packages.map(pkg => {
+
+    const image = pkg.cover_image
+      ? `<img
+           class="package-image"
+           src="${esc(pkg.cover_image)}"
+           alt="${esc(pkg.title)}"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+         <div class="package-image-placeholder" style="display:none">
+           🏔️ Image unavailable
+         </div>`
+      : `<div class="package-image-placeholder">🏔️ No cover image</div>`;
+
+    return `
+      <div class="package-card">
+
+        ${image}
+
+        <div class="package-body">
+
+          <div class="package-head">
+
+            <div>
+
+              <div class="package-title">
+                ${esc(pkg.title)}
+              </div>
+
+              <div class="package-meta">
+                📍 ${esc(pkg.destination)}
+                •
+                🕒 ${esc(pkg.duration)}
+              </div>
+
+            </div>
+
+            <div class="package-status">
+
+              ${
+                pkg.featured
+                ? '<span class="badge gold">⭐ Featured</span>'
+                : ''
+              }
+
+              <span class="badge ${pkg.active ? 'green' : ''}">
+                ${pkg.active ? 'Active' : 'Inactive'}
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="package-description">
+            ${esc(pkg.short_description || 'No description added.')}
+          </div>
+
+          <div class="package-price">
+            Starting ${money(pkg.price)}
+          </div>
+
+          <div class="package-actions">
+
+            <button
+              class="btn"
+              onclick="editPackageById('${esc(pkg.id)}')">
+              ✏️ Edit
+            </button>
+
+            <button
+              class="btn"
+              onclick="togglePackage('${esc(pkg.id)}', ${pkg.active ? 'false' : 'true'})">
+              ${pkg.active ? '⏸️ Disable' : '▶️ Activate'}
+            </button>
+
+            <button
+              class="btn red"
+              onclick="deletePackage('${esc(pkg.id)}')">
+              🗑️ Delete
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  }).join('');
+
+}
+
+async function editPackageById(id){
+
+  try{
+
+    const {data,error} = await supabaseClient
+      .from('packages')
+      .select('*')
+      .eq('id',id)
+      .single();
+
+    if(error) throw error;
+
+    openPackageForm(data);
+
+  }catch(error){
+
+    alert(
+      'Could not open package.\\n\\n' +
+      (error.message || 'Unknown error')
+    );
+
+  }
+
+}
+
+function editPackage(pkg){
+
+  openPackageForm(pkg);
+
+}
+
+async function togglePackage(id, active){
+
+  try{
+
+    const {error} = await supabaseClient
+      .from('packages')
+      .update({
+        active:active,
+        updated_at:new Date().toISOString()
+      })
+      .eq('id',id);
+
+    if(error) throw error;
+
+    await loadPackages();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      'Could not change package status.\n\n' +
+      (error.message || 'Unknown error')
+    );
+
+  }
+
+}
+
+async function deletePackage(id){
+
+  if(!confirm(
+    'Delete this package permanently?'
+  )) return;
+
+  try{
+
+    const {error} = await supabaseClient
+      .from('packages')
+      .delete()
+      .eq('id',id);
+
+    if(error) throw error;
+
+    await loadPackages();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      'Could not delete package.\n\n' +
+      (error.message || 'Unknown error')
+    );
+
+  }
+
+}
+
+
+/* =====================================================
 BOOKINGS
 ===================================================== */
 
@@ -2363,6 +3250,40 @@ ${money(q.margin)}
 }
 
 
+async function loadPackageDashboardSummary(){
+
+  const box =
+    document.getElementById('packageDashboardSummary');
+
+  if(!box) return;
+
+  try{
+
+    const {data,error} = await supabaseClient
+      .from('packages')
+      .select('id,active,featured');
+
+    if(error) throw error;
+
+    const all = data || [];
+
+    const active = all.filter(p => p.active).length;
+    const featured = all.filter(p => p.featured).length;
+
+    box.innerHTML =
+      `<strong>${active}</strong> active packages • ` +
+      `<strong>${featured}</strong> featured • ` +
+      `<strong>${all.length}</strong> total`;
+
+  }catch(error){
+
+    box.textContent = 'Package data unavailable.';
+
+  }
+
+}
+
+
 /* =====================================================
 REFRESH EVERYTHING
 ===================================================== */
@@ -2378,6 +3299,10 @@ displayPartners();
 displayBookings();
 
 loadPartnerSelect();
+
+if(document.getElementById('packageList')) loadPackages();
+
+loadPackageDashboardSummary();
 
 calculateQuote();
 
