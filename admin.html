@@ -708,6 +708,12 @@ onclick="showPage('customers',this)">
 👤 Customers
 </button>
 
+<button
+class="nav-btn"
+onclick="showPage('enquiries',this)">
+📥 Enquiries
+</button>
+
 
 <button
 class="nav-btn"
@@ -1644,6 +1650,47 @@ Loading packages...
 
 
 <!-- =====================================================
+ENQUIRIES
+===================================================== -->
+
+<section
+id="enquiries"
+class="page hidden">
+
+<div class="topbar">
+
+<div>
+<h1>Enquiry Manager</h1>
+<p>Website enquiries received from the Himalayan Gateway quote form</p>
+</div>
+
+<button class="btn" onclick="loadEnquiries()">↻ Refresh</button>
+
+</div>
+
+<div class="panel">
+
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px">
+<select id="enquiryStatusFilter" onchange="loadEnquiries()" style="max-width:220px;margin-bottom:0">
+<option value="">All Statuses</option>
+<option>New</option>
+<option>Contacted</option>
+<option>Quoted</option>
+<option>Confirmed</option>
+<option>Cancelled</option>
+</select>
+</div>
+
+<div id="enquiryList" class="package-list">
+<div class="empty">Loading enquiries...</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
 BOOKINGS
 ===================================================== -->
 
@@ -1941,6 +1988,9 @@ refreshDashboard();
 
 if(id==='customers')
 displayCustomers();
+
+if(id==='enquiries')
+loadEnquiries();
 
 if(id==='partners')
 displayPartners();
@@ -3104,6 +3154,196 @@ async function deletePackage(id){
 
   }
 
+}
+
+
+/* =====================================================
+ENQUIRIES
+===================================================== */
+
+function enquiryDate(value){
+  if(!value) return '—';
+  const d = new Date(value);
+  if(Number.isNaN(d.getTime())) return esc(value);
+  return d.toLocaleString('en-IN', {
+    day:'2-digit', month:'short', year:'numeric',
+    hour:'2-digit', minute:'2-digit'
+  });
+}
+
+function enquiryStatusClass(status){
+  if(status==='Confirmed') return 'green';
+  if(status==='Cancelled') return 'red';
+  if(status==='Quoted') return 'gold';
+  if(status==='Contacted') return 'blue';
+  return '';
+}
+
+async function loadEnquiries(){
+  const box = document.getElementById('enquiryList');
+  if(!box) return;
+
+  box.innerHTML = '<div class="empty">Loading enquiries...</div>';
+
+  const filter = document.getElementById('enquiryStatusFilter')?.value || '';
+
+  try{
+    let query = supabaseClient
+      .from('enquiries')
+      .select('*')
+      .order('created_at',{ascending:false});
+
+    if(filter) query = query.eq('status', filter);
+
+    const {data,error} = await query;
+    if(error) throw error;
+
+    const enquiries = data || [];
+
+    if(!enquiries.length){
+      box.innerHTML = '<div class="empty">No enquiries found.</div>';
+      return;
+    }
+
+    box.innerHTML = enquiries.map(renderEnquiry).join('');
+
+  }catch(error){
+    console.error('Enquiry load error:', error);
+    box.innerHTML = `<div class="empty">Unable to load enquiries.<br><span class="small">${esc(error.message || 'Unknown error')}</span></div>`;
+  }
+}
+
+function renderEnquiry(q){
+  const phone = String(q.phone || '').replace(/\D/g,'');
+  const whatsappPhone = phone.length===10 ? '91'+phone : phone;
+
+  const whatsappText = encodeURIComponent(
+    `Hello ${q.name || ''}, this is Himalayan Gateway regarding your ${q.destination || ''} travel enquiry. We received your request and would like to discuss the trip details with you.`
+  );
+
+  const status = q.status || 'New';
+
+  return `
+    <div class="package-card" style="padding:20px">
+      <div class="package-body" style="padding:0">
+
+        <div class="package-head">
+          <div>
+            <div class="package-title">${esc(q.name || 'Unknown Customer')}</div>
+            <div class="package-meta">
+              📍 ${esc(q.destination || '—')} • 👥 ${esc(q.travellers || '—')} travellers • 🌙 ${esc(q.nights || '0')} nights
+            </div>
+          </div>
+          <div class="package-status">
+            <span class="badge ${enquiryStatusClass(status)}">${esc(status)}</span>
+          </div>
+        </div>
+
+        <div class="small" style="margin:10px 0">
+          🆔 ${esc(q.id)} • 📅 Received ${enquiryDate(q.created_at)}
+        </div>
+
+        <div class="grid2" style="margin-top:12px">
+          <div>
+            <strong>📱 WhatsApp</strong><br>
+            <span class="small">${esc(q.phone || '—')}</span>
+          </div>
+          <div>
+            <strong>🗓 Travel Date</strong><br>
+            <span class="small">${esc(q.travel_date || 'Flexible')}</span>
+          </div>
+          <div>
+            <strong>💰 Budget</strong><br>
+            <span class="small">${esc(q.budget || '—')}</span>
+          </div>
+          <div>
+            <strong>❤️ Trip Type</strong><br>
+            <span class="small">${esc(q.trip_type || '—')}</span>
+          </div>
+          <div>
+            <strong>🏨 Hotel</strong><br>
+            <span class="small">${esc(q.hotel_preference || '—')}</span>
+          </div>
+          <div>
+            <strong>🚗 Vehicle</strong><br>
+            <span class="small">${esc(q.vehicle_requirement || '—')}</span>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;padding:14px;background:#ffffff08;border:1px solid var(--line);border-radius:12px">
+          <strong>📝 Requirements</strong>
+          <div class="small" style="margin-top:7px;white-space:pre-wrap">${esc(q.message || 'None')}</div>
+        </div>
+
+        <div class="grid2" style="margin-top:14px">
+          <div>
+            <label>Status</label>
+            <select id="status-${esc(q.id)}" style="margin-bottom:0">
+              ${['New','Contacted','Quoted','Confirmed','Cancelled'].map(x => `<option ${x===status?'selected':''}>${x}</option>`).join('')}
+            </select>
+          </div>
+          <div>
+            <label>Quoted Amount (₹)</label>
+            <input id="amount-${esc(q.id)}" type="number" min="0" value="${esc(q.quoted_amount ?? '')}" placeholder="Optional" style="margin-bottom:0">
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <label>Admin Notes</label>
+          <textarea id="notes-${esc(q.id)}" style="min-height:80px;margin-bottom:0" placeholder="Follow-up notes, quotation details, etc.">${esc(q.admin_notes || '')}</textarea>
+        </div>
+
+        <div class="package-actions" style="margin-top:14px">
+          <button class="btn gold" onclick="updateEnquiry('${esc(q.id)}')">💾 Save Changes</button>
+          ${whatsappPhone ? `<a class="btn" href="https://wa.me/${whatsappPhone}?text=${whatsappText}" target="_blank" rel="noopener">💬 WhatsApp Customer</a>` : ''}
+          <button class="btn red" onclick="deleteEnquiry('${esc(q.id)}')">🗑️ Delete</button>
+        </div>
+
+      </div>
+    </div>
+  `;
+}
+
+async function updateEnquiry(id){
+  const status = document.getElementById(`status-${id}`)?.value || 'New';
+  const amount = document.getElementById(`amount-${id}`)?.value;
+  const notes = document.getElementById(`notes-${id}`)?.value.trim() || '';
+
+  try{
+    const {error} = await supabaseClient
+      .from('enquiries')
+      .update({
+        status,
+        quoted_amount: amount === '' ? null : Number(amount),
+        admin_notes: notes,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', id);
+
+    if(error) throw error;
+    alert('Enquiry updated successfully.');
+    await loadEnquiries();
+  }catch(error){
+    console.error('Enquiry update error:', error);
+    alert('Could not update enquiry.\n\n' + (error.message || 'Unknown error'));
+  }
+}
+
+async function deleteEnquiry(id){
+  if(!confirm('Delete this enquiry permanently?')) return;
+
+  try{
+    const {error} = await supabaseClient
+      .from('enquiries')
+      .delete()
+      .eq('id', id);
+
+    if(error) throw error;
+    await loadEnquiries();
+  }catch(error){
+    console.error('Enquiry delete error:', error);
+    alert('Could not delete enquiry.\n\n' + (error.message || 'Unknown error'));
+  }
 }
 
 
