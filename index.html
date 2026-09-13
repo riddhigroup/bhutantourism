@@ -756,35 +756,83 @@ section{
 @media(max-width:1000px){.packages{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.packages{grid-template-columns:1fr}.package-image-wrap{height:205px}.package-content{padding:20px}.package-actions{grid-template-columns:1fr 1fr}}
 
-/* ================= SERVICES ================= */
-
+/* ================= PREMIUM SERVICES ================= */
 .services{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:17px;
+  gap:18px;
 }
-
 .service{
-  padding:25px;
-  border:1px solid var(--line);
-  border-radius:20px;
-  background:var(--card);
+  position:relative;
+  min-height:235px;
+  padding:28px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.045));
+  box-shadow:0 14px 35px rgba(0,0,0,.12);
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
 }
-
+.service:before{
+  content:"";
+  position:absolute;
+  width:120px;height:120px;
+  right:-55px;top:-55px;
+  border-radius:50%;
+  background:rgba(216,179,106,.12);
+  filter:blur(2px);
+}
+.service:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;height:3px;
+  background:linear-gradient(90deg,transparent,rgba(216,179,106,.75),transparent);
+  opacity:0;transition:.35s;
+}
+.service:hover{
+  transform:translateY(-8px);
+  border-color:rgba(216,179,106,.42);
+  box-shadow:0 24px 55px rgba(0,0,0,.20);
+}
+.service:hover:after{opacity:1}
 .service-icon{
-  font-size:31px;
-  margin-bottom:12px;
+  width:56px;height:56px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;
+  border-radius:17px;
+  font-size:28px;
+  background:rgba(255,255,255,.11);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 1px rgba(255,255,255,.15);
 }
-
 .service h3{
-  font-size:18px;
-  margin-bottom:7px;
+  font-size:19px;
+  margin:0 0 9px;
+  letter-spacing:-.2px;
 }
-
 .service p{
   font-size:13px;
+  line-height:1.7;
   color:var(--muted);
+  margin:0;
 }
+.service-label{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:18px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(216,179,106,.20);
+  background:rgba(216,179,106,.08);
+  color:var(--gold2);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+}
+@media(max-width:1050px){.services{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.services{grid-template-columns:1fr}.service{min-height:auto}}
 
 /* ================= PARTNER ================= */
 
@@ -1735,49 +1783,49 @@ footer{
       <div class="service">
         <div class="service-icon">🚗</div>
         <h3>Private Vehicles</h3>
-        <p>Sedan, SUV and larger vehicle options depending on your group.</p>
+        <p>Sedan, SUV and larger vehicle options depending on your group.</p><span class="service-label">Comfort on the road</span>
       </div>
 
       <div class="service">
         <div class="service-icon">🏨</div>
         <h3>Hotels & Stays</h3>
-        <p>Budget, standard and premium stay options according to availability.</p>
+        <p>Budget, standard and premium stay options according to availability.</p><span class="service-label">Stay your way</span>
       </div>
 
       <div class="service">
         <div class="service-icon">🗺️</div>
         <h3>Custom Itinerary</h3>
-        <p>We plan around your dates, interests, budget and preferred pace.</p>
+        <p>We plan around your dates, interests, budget and preferred pace.</p><span class="service-label">Built around you</span>
       </div>
 
       <div class="service">
         <div class="service-icon">📱</div>
         <h3>Travel Assistance</h3>
-        <p>WhatsApp-based support before and during your trip where available.</p>
+        <p>WhatsApp-based support before and during your trip where available.</p><span class="service-label">Here when needed</span>
       </div>
 
       <div class="service">
         <div class="service-icon">🇧🇹</div>
         <h3>Bhutan Assistance</h3>
-        <p>Guidance for your Bhutan travel planning and relevant arrangements.</p>
+        <p>Guidance for your Bhutan travel planning and relevant arrangements.</p><span class="service-label">Bhutan focused</span>
       </div>
 
       <div class="service">
         <div class="service-icon">🌿</div>
         <h3>Local Experiences</h3>
-        <p>Explore villages, forests, rivers and offbeat destinations.</p>
+        <p>Explore villages, forests, rivers and offbeat destinations.</p><span class="service-label">Beyond the usual</span>
       </div>
 
       <div class="service">
         <div class="service-icon">👨‍👩‍👧‍👦</div>
         <h3>Family & Groups</h3>
-        <p>Flexible arrangements for families, friends, couples and groups.</p>
+        <p>Flexible arrangements for families, friends, couples and groups.</p><span class="service-label">Easy group travel</span>
       </div>
 
       <div class="service">
         <div class="service-icon">🤝</div>
         <h3>Special Partner Help</h3>
-        <p>For selected requirements, we can coordinate with suitable local partners.</p>
+        <p>For selected requirements, we can coordinate with suitable local partners.</p><span class="service-label">Local coordination</span>
       </div>
 
     </div>
