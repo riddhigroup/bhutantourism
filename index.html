@@ -663,147 +663,6 @@ section{
 
 
 /* ================= PREMIUM DESTINATION EXPERIENCE ================= */
-const DESTINATION_EXPERIENCES = {
-  "Bhutan":{
-    kicker:"Kingdom of Bhutan • Himalayan Escape",
-    subtitle:"A slower, quieter Himalayan journey through valleys, monasteries and living culture.",
-    story:"Bhutan is more than a destination — it is an atmosphere. Combine Thimphu, Paro, Punakha and mountain viewpoints with comfortable stays and a thoughtfully paced route from the Jaigaon gateway.",
-    experiences:["Paro Valley","Thimphu culture","Punakha","Dochula","Monasteries","Himalayan drives"],
-    bestFor:["Families","Couples","First-time visitors","Culture lovers","Photography"],
-    route:["Jaigaon / Phuentsholing","Thimphu","Punakha","Paro"],
-    image:"https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1800&q=90"
-  },
-  "Sikkim":{
-    kicker:"Sikkim • High Himalayan Escape",
-    subtitle:"Mountain roads, monasteries, lakes and dramatic Himalayan landscapes.",
-    story:"From Gangtok to Pelling and the northern mountain routes, Sikkim brings together peaceful monasteries, high-altitude scenery and memorable road journeys.",
-    experiences:["Gangtok","Pelling","Lachung","Yumthang","Monasteries","Mountain viewpoints"],
-    bestFor:["Couples","Families","Friends","Photography","Mountain lovers"],
-    route:["Siliguri","Gangtok","Pelling / North Sikkim","Return"],
-    image:"https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1800&q=90"
-  },
-  "Darjeeling":{
-    kicker:"Darjeeling • Queen of the Hills",
-    subtitle:"Tea gardens, misty mornings, mountain views and timeless hill-station charm.",
-    story:"Darjeeling blends heritage and Himalayan scenery beautifully. Slow mornings, tea estates, local food, viewpoints and the famous hill railway make it an easy destination to fall in love with.",
-    experiences:["Tiger Hill","Tea gardens","Batasia Loop","Toy Train","Mall Road","Mountain views"],
-    bestFor:["Families","Couples","First-time visitors","Photography","Weekend trips"],
-    route:["Siliguri","Darjeeling","Local sightseeing","Return"],
-    image:"https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=1800&q=90"
-  },
-  "Kalimpong":{
-    kicker:"Kalimpong • Quiet Himalaya",
-    subtitle:"A peaceful hill escape with monasteries, gardens and wide mountain views.",
-    story:"Kalimpong is ideal when you want the hills without rushing. Spend time around monasteries, flower gardens, viewpoints and relaxed local neighbourhoods.",
-    experiences:["Deolo Hill","Monasteries","Flower nurseries","River views","Local markets","Offbeat stays"],
-    bestFor:["Families","Couples","Nature lovers","Slow travellers","Photography"],
-    route:["Siliguri","Kalimpong","Local experiences","Return"],
-    image:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-  },
-  "Mirik":{
-    kicker:"Mirik • Peaceful Hill Getaway",
-    subtitle:"Lake reflections, tea gardens and a relaxed escape from the everyday rush.",
-    story:"Mirik works beautifully for travellers who want a gentle mountain break. Combine the lake and tea gardens with nearby viewpoints and village experiences.",
-    experiences:["Mirik Lake","Tea gardens","Viewpoints","Orange orchards","Local walks","Nearby villages"],
-    bestFor:["Couples","Families","Weekend trips","Nature lovers","Photography"],
-    route:["Siliguri","Mirik","Tea gardens","Return"],
-    image:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
-  },
-  "Forest Retreats":{
-    kicker:"North Bengal • Forest Retreats",
-    subtitle:"Trade the noise for birdsong, rivers, forests and slow mornings.",
-    story:"Choose an offbeat forest stay when the journey itself matters. We can build a quieter route around rivers, forests, village life and nature-focused stays.",
-    experiences:["Forest stays","Riverside time","Bird watching","Village walks","Tea gardens","Photography"],
-    bestFor:["Couples","Families","Nature lovers","Photography","Offbeat travellers"],
-    route:["Choose region","Select a forest stay","Slow exploration","Return"],
-    image:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90"
-  },
-  "Custom Trips":{
-    kicker:"Himalayan Gateway • Your Journey",
-    subtitle:"Don't choose a template. Tell us what you want to experience.",
-    story:"Bhutan, Dooars, Sikkim, Darjeeling and Kalimpong can be combined around your time, budget and interests. Tell us what matters most and we'll shape the route.",
-    experiences:["Multi-destination","Flexible duration","Hotel choices","Vehicle options","Local support","Personalised routing"],
-    bestFor:["Families","Couples","Friends","Groups","First-time visitors"],
-    route:["Tell us your idea","We design the route","Review the plan","Travel"],
-    image:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=90"
-  }
-};
-
-let currentDestinationExperience = "Custom Trips";
-
-function openDestinationExperience(name){
-  const d = DESTINATION_EXPERIENCES[name] || DESTINATION_EXPERIENCES["Custom Trips"];
-  currentDestinationExperience = name;
-
-  document.getElementById("destinationExperienceKicker").textContent = d.kicker;
-  document.getElementById("destinationExperienceTitle").textContent = name;
-  document.getElementById("destinationExperienceSubtitle").textContent = d.subtitle;
-  document.getElementById("destinationExperienceStory").textContent = d.story;
-  document.getElementById("destinationExperienceHero").style.backgroundImage =
-    `url("${d.image}")`;
-
-  document.getElementById("destinationExperienceExperiences").innerHTML =
-    d.experiences.map(x => `<span>${x}</span>`).join("");
-
-  document.getElementById("destinationExperienceBestFor").innerHTML =
-    d.bestFor.map(x => `<span>${x}</span>`).join("");
-
-  document.getElementById("destinationExperienceRoute").innerHTML =
-    d.route.map((x,i) => `<span>${x}</span>${i < d.route.length-1 ? "<b>→</b>" : ""}`).join("");
-
-  const message =
-    `Hello Himalayan Gateway, I want to plan a ${name} trip. Please share available options.`;
-
-  document.getElementById("destinationExperienceWhatsApp").href =
-    `https://wa.me/919117740558?text=${encodeURIComponent(message)}`;
-
-  const modal = document.getElementById("destinationExperienceModal");
-  modal.classList.add("show");
-  modal.setAttribute("aria-hidden","false");
-  document.body.style.overflow = "hidden";
-}
-
-function closeDestinationExperience(){
-  const modal = document.getElementById("destinationExperienceModal");
-  if(!modal) return;
-  modal.classList.remove("show");
-  modal.setAttribute("aria-hidden","true");
-  document.body.style.overflow = "";
-}
-
-function selectDestinationForQuote(destination){
-  const value = destination || currentDestinationExperience;
-  closeDestinationExperience();
-
-  setTimeout(() => {
-    const select = document.getElementById("destination");
-    if(select){
-      let wanted = value;
-      if(value === "Dooars") wanted = "Dooars";
-      if(value === "Custom Trips") wanted = "Custom / Multiple Destinations";
-      const exists = [...select.options].some(
-        o => o.value === wanted || o.textContent === wanted
-      );
-      if(exists) select.value = wanted;
-    }
-
-    const quote = document.getElementById("quote");
-    if(quote) quote.scrollIntoView({behavior:"smooth",block:"start"});
-  },80);
-}
-
-document.addEventListener("click", e => {
-  const modal = document.getElementById("destinationExperienceModal");
-  if(modal && e.target === modal) closeDestinationExperience();
-});
-
-document.addEventListener("keydown", e => {
-  if(e.key === "Escape"){
-    closeDestinationExperience();
-  }
-});
-
-
 /* ================= DOOARS EXPERIENCE ================= */
 .dooars-grid .place{
   position:relative;
@@ -2731,6 +2590,148 @@ footer{
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
+const DESTINATION_EXPERIENCES = {
+  "Bhutan":{
+    kicker:"Kingdom of Bhutan • Himalayan Escape",
+    subtitle:"A slower, quieter Himalayan journey through valleys, monasteries and living culture.",
+    story:"Bhutan is more than a destination — it is an atmosphere. Combine Thimphu, Paro, Punakha and mountain viewpoints with comfortable stays and a thoughtfully paced route from the Jaigaon gateway.",
+    experiences:["Paro Valley","Thimphu culture","Punakha","Dochula","Monasteries","Himalayan drives"],
+    bestFor:["Families","Couples","First-time visitors","Culture lovers","Photography"],
+    route:["Jaigaon / Phuentsholing","Thimphu","Punakha","Paro"],
+    image:"https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1800&q=90"
+  },
+  "Sikkim":{
+    kicker:"Sikkim • High Himalayan Escape",
+    subtitle:"Mountain roads, monasteries, lakes and dramatic Himalayan landscapes.",
+    story:"From Gangtok to Pelling and the northern mountain routes, Sikkim brings together peaceful monasteries, high-altitude scenery and memorable road journeys.",
+    experiences:["Gangtok","Pelling","Lachung","Yumthang","Monasteries","Mountain viewpoints"],
+    bestFor:["Couples","Families","Friends","Photography","Mountain lovers"],
+    route:["Siliguri","Gangtok","Pelling / North Sikkim","Return"],
+    image:"https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1800&q=90"
+  },
+  "Darjeeling":{
+    kicker:"Darjeeling • Queen of the Hills",
+    subtitle:"Tea gardens, misty mornings, mountain views and timeless hill-station charm.",
+    story:"Darjeeling blends heritage and Himalayan scenery beautifully. Slow mornings, tea estates, local food, viewpoints and the famous hill railway make it an easy destination to fall in love with.",
+    experiences:["Tiger Hill","Tea gardens","Batasia Loop","Toy Train","Mall Road","Mountain views"],
+    bestFor:["Families","Couples","First-time visitors","Photography","Weekend trips"],
+    route:["Siliguri","Darjeeling","Local sightseeing","Return"],
+    image:"https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=1800&q=90"
+  },
+  "Kalimpong":{
+    kicker:"Kalimpong • Quiet Himalaya",
+    subtitle:"A peaceful hill escape with monasteries, gardens and wide mountain views.",
+    story:"Kalimpong is ideal when you want the hills without rushing. Spend time around monasteries, flower gardens, viewpoints and relaxed local neighbourhoods.",
+    experiences:["Deolo Hill","Monasteries","Flower nurseries","River views","Local markets","Offbeat stays"],
+    bestFor:["Families","Couples","Nature lovers","Slow travellers","Photography"],
+    route:["Siliguri","Kalimpong","Local experiences","Return"],
+    image:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+  },
+  "Mirik":{
+    kicker:"Mirik • Peaceful Hill Getaway",
+    subtitle:"Lake reflections, tea gardens and a relaxed escape from the everyday rush.",
+    story:"Mirik works beautifully for travellers who want a gentle mountain break. Combine the lake and tea gardens with nearby viewpoints and village experiences.",
+    experiences:["Mirik Lake","Tea gardens","Viewpoints","Orange orchards","Local walks","Nearby villages"],
+    bestFor:["Couples","Families","Weekend trips","Nature lovers","Photography"],
+    route:["Siliguri","Mirik","Tea gardens","Return"],
+    image:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+  },
+  "Forest Retreats":{
+    kicker:"North Bengal • Forest Retreats",
+    subtitle:"Trade the noise for birdsong, rivers, forests and slow mornings.",
+    story:"Choose an offbeat forest stay when the journey itself matters. We can build a quieter route around rivers, forests, village life and nature-focused stays.",
+    experiences:["Forest stays","Riverside time","Bird watching","Village walks","Tea gardens","Photography"],
+    bestFor:["Couples","Families","Nature lovers","Photography","Offbeat travellers"],
+    route:["Choose region","Select a forest stay","Slow exploration","Return"],
+    image:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=90"
+  },
+  "Custom Trips":{
+    kicker:"Himalayan Gateway • Your Journey",
+    subtitle:"Don't choose a template. Tell us what you want to experience.",
+    story:"Bhutan, Dooars, Sikkim, Darjeeling and Kalimpong can be combined around your time, budget and interests. Tell us what matters most and we'll shape the route.",
+    experiences:["Multi-destination","Flexible duration","Hotel choices","Vehicle options","Local support","Personalised routing"],
+    bestFor:["Families","Couples","Friends","Groups","First-time visitors"],
+    route:["Tell us your idea","We design the route","Review the plan","Travel"],
+    image:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=90"
+  }
+};
+
+let currentDestinationExperience = "Custom Trips";
+
+function openDestinationExperience(name){
+  const d = DESTINATION_EXPERIENCES[name] || DESTINATION_EXPERIENCES["Custom Trips"];
+  currentDestinationExperience = name;
+
+  document.getElementById("destinationExperienceKicker").textContent = d.kicker;
+  document.getElementById("destinationExperienceTitle").textContent = name;
+  document.getElementById("destinationExperienceSubtitle").textContent = d.subtitle;
+  document.getElementById("destinationExperienceStory").textContent = d.story;
+  document.getElementById("destinationExperienceHero").style.backgroundImage =
+    `url("${d.image}")`;
+
+  document.getElementById("destinationExperienceExperiences").innerHTML =
+    d.experiences.map(x => `<span>${x}</span>`).join("");
+
+  document.getElementById("destinationExperienceBestFor").innerHTML =
+    d.bestFor.map(x => `<span>${x}</span>`).join("");
+
+  document.getElementById("destinationExperienceRoute").innerHTML =
+    d.route.map((x,i) => `<span>${x}</span>${i < d.route.length-1 ? "<b>→</b>" : ""}`).join("");
+
+  const message =
+    `Hello Himalayan Gateway, I want to plan a ${name} trip. Please share available options.`;
+
+  document.getElementById("destinationExperienceWhatsApp").href =
+    `https://wa.me/919117740558?text=${encodeURIComponent(message)}`;
+
+  const modal = document.getElementById("destinationExperienceModal");
+  modal.classList.add("show");
+  modal.setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeDestinationExperience(){
+  const modal = document.getElementById("destinationExperienceModal");
+  if(!modal) return;
+  modal.classList.remove("show");
+  modal.setAttribute("aria-hidden","true");
+  document.body.style.overflow = "";
+}
+
+function selectDestinationForQuote(destination){
+  const value = destination || currentDestinationExperience;
+  closeDestinationExperience();
+
+  setTimeout(() => {
+    const select = document.getElementById("destination");
+    if(select){
+      let wanted = value;
+      if(value === "Dooars") wanted = "Dooars";
+      if(value === "Custom Trips") wanted = "Custom / Multiple Destinations";
+      const exists = [...select.options].some(
+        o => o.value === wanted || o.textContent === wanted
+      );
+      if(exists) select.value = wanted;
+    }
+
+    const quote = document.getElementById("quote");
+    if(quote) quote.scrollIntoView({behavior:"smooth",block:"start"});
+  },80);
+}
+
+document.addEventListener("click", e => {
+  const modal = document.getElementById("destinationExperienceModal");
+  if(modal && e.target === modal) closeDestinationExperience();
+});
+
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape"){
+    closeDestinationExperience();
+  }
+});
+
+
 
 /* ================= SUPABASE / PUBLIC PACKAGES ================= */
 
