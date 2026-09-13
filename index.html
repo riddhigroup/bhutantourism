@@ -2465,11 +2465,11 @@ function renderAdminPackage(pkg){
   const duration = escapeHTML(pkg.duration || "");
   const price = escapeHTML(packagePrice(pkg.price ?? pkg.starting_price));
   const description = escapeHTML(
-    pkg.description ||
+    pkg.short_description || pkg.description ||
     "A carefully planned journey with flexible travel options."
   );
 
-  const image = packageImage(pkg.image_url || pkg.image || pkg.photo);
+  const image = packageImage(pkg.cover_image || pkg.image_url || pkg.image || pkg.photo);
   const inclusions = packageList(pkg.inclusions);
 
   let listHTML = "";
