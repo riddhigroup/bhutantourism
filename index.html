@@ -267,6 +267,7 @@ header{
 
 section{
   padding:95px 0;
+  scroll-margin-top:88px;
 }
 
 .section-head{
@@ -457,6 +458,33 @@ section{
 }
 
 /* ================= PACKAGES ================= */
+
+.package-status{
+  grid-column:1/-1;
+  text-align:center;
+  padding:25px;
+  border:1px dashed var(--line);
+  border-radius:18px;
+  color:var(--muted);
+  background:rgba(255,255,255,.025);
+}
+
+.package-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.package-image{
+  width:100%;
+  height:175px;
+  border-radius:15px;
+  margin-bottom:18px;
+  object-fit:cover;
+  display:block;
+  border:1px solid var(--line);
+}
 
 .packages{
   display:grid;
@@ -1475,7 +1503,7 @@ footer{
     </div>
 
 
-    <div class="packages">
+    <div class="packages" id="packagesGrid">
 
       <div class="package featured">
 
@@ -1504,7 +1532,6 @@ footer{
 
       </div>
 
-
       <div class="package">
 
         <h3>🌿 Dooars Escape</h3>
@@ -1529,7 +1556,6 @@ footer{
         </a>
 
       </div>
-
 
       <div class="package">
 
@@ -1556,7 +1582,6 @@ footer{
 
       </div>
 
-
       <div class="package">
 
         <h3>🌄 Darjeeling Escape</h3>
@@ -1581,7 +1606,6 @@ footer{
         </a>
 
       </div>
-
 
       <div class="package">
 
@@ -1608,7 +1632,6 @@ footer{
 
       </div>
 
-
       <div class="package">
 
         <h3>✨ Multi-Destination</h3>
@@ -1633,6 +1656,9 @@ footer{
         </a>
 
       </div>
+
+      <!-- Admin-created active packages are inserted here after the built-in ideas. -->
+      <div id="adminPackagesStatus" class="package-status" style="display:none"></div>
 
     </div>
 
@@ -2329,7 +2355,246 @@ footer{
 </a>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+
+/* ================= SUPABASE / PUBLIC PACKAGES ================= */
+
+const SUPABASE_URL = "https://nqulaiyzynywjkxvciuf.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_bwxR4v-Bg6N9uzafI9kO-Q_hT7Drrx_";
+const WHATSAPP_NUMBER = "919117740558";
+
+let supabaseClient = null;
+
+if (window.supabase && window.supabase.createClient) {
+  supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+  );
+}
+
+/* ================= PACKAGE NAVIGATION ================= */
+
+function openPackages(event){
+  if (event) event.preventDefault();
+
+  const section = document.getElementById("packages");
+
+  if (section) {
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+    if (history.replaceState) {
+      history.replaceState(null, "", "#packages");
+    }
+  }
+
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (mobileMenu) {
+    mobileMenu.classList.remove("active");
+    document.body.classList.remove("menu-open");
+  }
+}
+
+document.querySelectorAll('a[href="#packages"]').forEach(function(link){
+  link.addEventListener("click", openPackages);
+});
+
+/* ================= LOAD ADMIN PACKAGES ================= */
+
+function escapeHTML(value){
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function packagePrice(value){
+  if (value === null || value === undefined || String(value).trim() === "") {
+    return "Custom Quote";
+  }
+
+  const raw = String(value).trim();
+
+  if (/^₹|^rs\.?\s?/i.test(raw)) {
+    return raw;
+  }
+
+  const numeric = Number(raw.replace(/,/g, ""));
+
+  if (Number.isFinite(numeric)) {
+    return "₹" + numeric.toLocaleString("en-IN");
+  }
+
+  return raw;
+}
+
+function packageList(value){
+  if (Array.isArray(value)) {
+    return value.filter(Boolean).map(String);
+  }
+
+  if (!value) return [];
+
+  return String(value)
+    .split(/\r?\n|,/)
+    .map(function(item){ return item.trim(); })
+    .filter(Boolean);
+}
+
+function packageImage(url){
+  if (!url) return "";
+
+  const safeUrl = String(url).trim();
+
+  if (!/^https?:\/\//i.test(safeUrl)) {
+    return "";
+  }
+
+  return safeUrl;
+}
+
+function renderAdminPackage(pkg){
+  const title = escapeHTML(pkg.title || pkg.name || "Travel Package");
+  const destination = escapeHTML(pkg.destination || "Himalayan Gateway");
+  const duration = escapeHTML(pkg.duration || "");
+  const price = escapeHTML(packagePrice(pkg.price ?? pkg.starting_price));
+  const description = escapeHTML(
+    pkg.description ||
+    "A carefully planned journey with flexible travel options."
+  );
+
+  const image = packageImage(pkg.image_url || pkg.image || pkg.photo);
+  const inclusions = packageList(pkg.inclusions);
+
+  let listHTML = "";
+
+  if (inclusions.length) {
+    listHTML = inclusions.slice(0, 8).map(function(item){
+      return "<li>" + escapeHTML(item) + "</li>";
+    }).join("");
+  } else {
+    listHTML = [
+      destination,
+      duration || "Flexible itinerary",
+      "Hotel options",
+      "Vehicle options",
+      "Travel assistance"
+    ].map(function(item){
+      return "<li>" + escapeHTML(item) + "</li>";
+    }).join("");
+  }
+
+  const featured = pkg.featured === true || pkg.featured === "true";
+
+  return `
+    <article class="package${featured ? " featured" : ""}">
+      ${featured ? '<span class="package-badge">FEATURED</span>' : ""}
+
+      ${image ? `
+        <img
+          class="package-image"
+          src="${escapeHTML(image)}"
+          alt="${title}"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        >
+      ` : ""}
+
+      <h3>${title}</h3>
+
+      <div class="price">${price}</div>
+
+      <div class="sub">
+        ${description}
+      </div>
+
+      ${duration ? `
+        <div class="tag">⏱ ${duration}</div>
+      ` : ""}
+
+      <ul>
+        ${listHTML}
+      </ul>
+
+      <div class="package-actions">
+        <a href="#quote" class="btn btn-primary">
+          Enquire Now
+        </a>
+
+        <a
+          href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+            "Hello Himalayan Gateway, I am interested in the " +
+            (pkg.title || pkg.name || "travel package") +
+            " package."
+          )}"
+          class="btn btn-outline"
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp
+        </a>
+      </div>
+    </article>
+  `;
+}
+
+async function loadAdminPackages(){
+  const grid = document.getElementById("packagesGrid");
+  const status = document.getElementById("adminPackagesStatus");
+
+  if (!grid || !supabaseClient) {
+    return;
+  }
+
+  try {
+    const result = await supabaseClient
+      .from("packages")
+      .select("*")
+      .eq("active", true)
+      .order("featured", { ascending: false })
+      .order("created_at", { ascending: false });
+
+    if (result.error) {
+      console.warn("Public package load skipped:", result.error.message);
+      return;
+    }
+
+    const packages = result.data || [];
+
+    if (!packages.length) {
+      return;
+    }
+
+    const cards = packages.map(renderAdminPackage).join("");
+
+    /*
+      Keep the original built-in travel ideas and append
+      the packages created from the Admin Panel.
+    */
+    const statusHTML = `
+      <div class="package-status" style="grid-column:1/-1">
+        <strong>Latest Packages</strong><br>
+        <span>Fresh packages published from the Himalayan Gateway admin panel.</span>
+      </div>
+    `;
+
+    const existingStatus = document.getElementById("adminPackagesStatus");
+    if (existingStatus) {
+      existingStatus.outerHTML = statusHTML + cards;
+    } else {
+      grid.insertAdjacentHTML("beforeend", statusHTML + cards);
+    }
+
+  } catch (error) {
+    console.warn("Public package loading error:", error);
+  }
+}
 
 /* ================= MOBILE MENU ================= */
 
@@ -2356,9 +2621,6 @@ document.querySelectorAll(".mobile-menu a").forEach(function(link){
 
 
 /* ================= WHATSAPP NUMBER ================= */
-
-const WHATSAPP_NUMBER = "919117740558";
-
 
 /* ================= QUOTE FORM ================= */
 
@@ -2453,6 +2715,10 @@ Source: Himalayan Gateway Website`;
 
 });
 
+
+/* ================= PUBLIC PACKAGE LOAD ================= */
+
+loadAdminPackages();
 
 /* ================= DATE LIMIT ================= */
 
