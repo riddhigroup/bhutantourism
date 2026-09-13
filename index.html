@@ -2235,13 +2235,12 @@ footer{
             style="width:100%;border:0"
             type="submit">
 
-            💬 Send Enquiry on WhatsApp
+            💬 Send Enquiry
 
           </button>
 
           <div class="notice">
-            Your enquiry will open WhatsApp with the information you entered.
-            We use these details only to discuss your travel enquiry.
+            Your enquiry will be securely saved. We will contact you through WhatsApp to discuss your travel enquiry.
           </div>
 
         </div>
@@ -2624,46 +2623,64 @@ document.querySelectorAll(".mobile-menu a").forEach(function(link){
 
 /* ================= QUOTE FORM ================= */
 
-document.getElementById("quoteForm").addEventListener("submit", function(e){
+document.getElementById("quoteForm").addEventListener("submit", async function(e){
 
   e.preventDefault();
 
-  const name =
-    document.getElementById("name").value.trim();
+  const form = this;
+  const submitButton = form.querySelector('button[type="submit"]');
 
-  const phone =
-    document.getElementById("phone").value.trim();
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const destination = document.getElementById("destination").value;
+  const date = document.getElementById("date").value || null;
+  const pax = Number(document.getElementById("pax").value || 2);
+  const nights = Number(document.getElementById("nights").value || 0);
+  const budget = document.getElementById("budget").value;
+  const type = document.getElementById("type").value;
+  const hotel = document.getElementById("hotel").value;
+  const vehicle = document.getElementById("vehicle").value;
+  const message = document.getElementById("message").value.trim();
 
-  const destination =
-    document.getElementById("destination").value;
+  if(!name || !phone || !destination){
+    alert("Please fill all required fields.");
+    return;
+  }
 
-  const date =
-    document.getElementById("date").value || "Flexible";
+  if(!supabaseClient){
+    alert("Enquiry service is temporarily unavailable. Please contact us on WhatsApp.");
+    return;
+  }
 
-  const pax =
-    document.getElementById("pax").value;
+  const originalText = submitButton.innerHTML;
+  submitButton.disabled = true;
+  submitButton.innerHTML = "⏳ Sending Enquiry...";
 
-  const nights =
-    document.getElementById("nights").value;
+  try{
 
-  const budget =
-    document.getElementById("budget").value;
+    const { data: enquiry, error } = await supabaseClient
+      .from("enquiries")
+      .insert([{
+        name,
+        phone,
+        destination,
+        travel_date: date,
+        travellers: pax,
+        nights,
+        budget,
+        trip_type: type,
+        hotel_preference: hotel,
+        vehicle_requirement: vehicle,
+        message,
+        status: "New",
+        source: "Himalayan Gateway Website"
+      }])
+      .select()
+      .single();
 
-  const type =
-    document.getElementById("type").value;
+    if(error) throw error;
 
-  const hotel =
-    document.getElementById("hotel").value;
-
-  const vehicle =
-    document.getElementById("vehicle").value;
-
-  const message =
-    document.getElementById("message").value.trim() || "None";
-
-
-  const text =
-
+    const text =
 `🌄 NEW TRAVEL ENQUIRY
 ━━━━━━━━━━━━━━━━━━
 
@@ -2677,7 +2694,7 @@ ${phone}
 ${destination}
 
 📅 Travel Date:
-${date}
+${date || "Flexible"}
 
 👥 Travellers:
 ${pax}
@@ -2698,20 +2715,35 @@ ${hotel}
 ${vehicle}
 
 📝 Requirements:
-${message}
+${message || "None"}
+
+🆔 Enquiry ID:
+${enquiry?.id || "New"}
 
 ━━━━━━━━━━━━━━━━━━
 Source: Himalayan Gateway Website`;
 
+    const whatsappURL =
+      "https://wa.me/" +
+      WHATSAPP_NUMBER +
+      "?text=" +
+      encodeURIComponent(text);
 
-  const whatsappURL =
-    "https://wa.me/" +
-    WHATSAPP_NUMBER +
-    "?text=" +
-    encodeURIComponent(text);
+    alert("Thank you! Your enquiry has been received. We will contact you shortly.");
+    form.reset();
+    document.getElementById("pax").value = "2";
+    document.getElementById("nights").value = "2";
+    document.getElementById("date").min = `${yyyy}-${mm}-${dd}`;
 
+    window.open(whatsappURL, "_blank");
 
-  window.open(whatsappURL, "_blank");
+  }catch(error){
+    console.error("Enquiry save error:", error);
+    alert("We could not save your enquiry right now. Please try again or contact us on WhatsApp.");
+  }finally{
+    submitButton.disabled = false;
+    submitButton.innerHTML = originalText;
+  }
 
 });
 
