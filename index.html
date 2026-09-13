@@ -729,100 +729,32 @@ section{
 .dooars-modal-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}.dooars-modal-actions a,.dooars-modal-actions button{border:0;cursor:pointer}
 @media(max-width:760px){.dooars-grid{grid-template-columns:1fr}.dooars-modal{padding:10px}.dooars-modal-hero{min-height:330px;padding:26px}.dooars-modal-body{padding:22px}.dooars-modal-grid{grid-template-columns:1fr}}
 
-/* ================= PACKAGES ================= */
-
-.package-status{
-  grid-column:1/-1;
-  text-align:center;
-  padding:25px;
-  border:1px dashed var(--line);
-  border-radius:18px;
-  color:var(--muted);
-  background:rgba(255,255,255,.025);
-}
-
-.package-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:18px;
-}
-
-.package-image{
-  width:100%;
-  height:175px;
-  border-radius:15px;
-  margin-bottom:18px;
-  object-fit:cover;
-  display:block;
-  border:1px solid var(--line);
-}
-
-.packages{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.package{
-  padding:27px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
-  position:relative;
-  overflow:hidden;
-}
-
-.package.featured{
-  border-color:rgba(216,179,106,.5);
-}
-
-.package-badge{
-  position:absolute;
-  right:18px;
-  top:18px;
-  background:rgba(216,179,106,.13);
-  color:var(--gold2);
-  border:1px solid rgba(216,179,106,.3);
-  padding:5px 9px;
-  border-radius:999px;
-  font-size:10px;
-  font-weight:800;
-}
-
-.package h3{
-  font-size:24px;
-}
-
-.package .price{
-  font-size:27px;
-  color:var(--gold);
-  font-weight:900;
-  margin:10px 0;
-}
-
-.package .sub{
-  color:var(--muted);
-  font-size:13px;
-}
-
-.package ul{
-  list-style:none;
-  color:var(--muted);
-  font-size:14px;
-  margin:18px 0 23px;
-}
-
-.package li{
-  margin:8px 0;
-}
-
-.package li:before{
-  content:"✓ ";
-  color:var(--green);
-  font-weight:bold;
-}
+/* ================= PACKAGES — PREMIUM ================= */
+.package-status{grid-column:1/-1;text-align:center;padding:25px;border:1px dashed var(--line);border-radius:18px;color:var(--muted);background:rgba(255,255,255,.025)}
+.packages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+.package{padding:0 0 24px;border:1px solid rgba(255,255,255,.11);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.035));position:relative;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;box-shadow:0 12px 35px rgba(0,0,0,.16);isolation:isolate}
+.package:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 0%,rgba(216,179,106,.14),transparent 32%);pointer-events:none;z-index:-1}
+.package:hover{transform:translateY(-9px);border-color:rgba(216,179,106,.42);box-shadow:0 25px 55px rgba(0,0,0,.28)}
+.package.featured{border-color:rgba(216,179,106,.62);box-shadow:0 18px 45px rgba(216,179,106,.12)}
+.package-image-wrap{height:215px;position:relative;overflow:hidden;background:#17343d}
+.package-image{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;filter:saturate(1.08) contrast(1.03)}
+.package:hover .package-image{transform:scale(1.06)}
+.package-image-wrap:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,13,17,.02) 35%,rgba(4,13,17,.68) 100%);pointer-events:none}
+.package-badge{position:absolute;right:17px;top:17px;z-index:3;background:rgba(13,25,29,.82);backdrop-filter:blur(10px);color:var(--gold2);border:1px solid rgba(216,179,106,.48);padding:7px 11px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.6px}
+.package-content{padding:22px 24px 0}
+.package-kicker{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.package-destination{color:var(--gold2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.package-duration{padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);text-transform:none;letter-spacing:0}
+.package h3{font-size:24px;line-height:1.2;margin:0 0 8px;color:#fff}
+.package .price{font-size:28px;color:var(--gold);font-weight:900;margin:8px 0 9px;letter-spacing:-.5px}
+.package .sub{color:var(--muted);font-size:13px;line-height:1.65;min-height:43px}
+.package ul{list-style:none;color:var(--muted);font-size:13px;margin:18px 0 22px;padding:0}
+.package li{margin:9px 0;line-height:1.45}
+.package li:before{content:"✓";display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center;margin-right:7px;border-radius:50%;background:rgba(37,211,102,.1);color:var(--green);font-weight:900;font-size:11px}
+.package-actions{display:grid;grid-template-columns:1.15fr .85fr;gap:10px;margin-top:auto}
+.package-actions .btn{width:100%;padding:12px 12px}
+@media(max-width:1000px){.packages{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.packages{grid-template-columns:1fr}.package-image-wrap{height:205px}.package-content{padding:20px}.package-actions{grid-template-columns:1fr 1fr}}
 
 /* ================= SERVICES ================= */
 
@@ -1738,159 +1670,37 @@ footer{
 
     <div class="packages" id="packagesGrid">
 
-      <div class="package featured">
-
+      <article class="package featured">
         <span class="package-badge">MOST POPULAR</span>
+        <div class="package-image-wrap"><img class="package-image" src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=88" alt="Bhutan mountains and monastery" loading="lazy"></div>
+        <div class="package-content"><div class="package-kicker"><span class="package-destination">🇧🇹 Bhutan</span><span class="package-duration">5N / 6D</span></div><h3>Bhutan Explorer</h3><div class="price">Custom Quote</div><div class="sub">A beautifully paced Bhutan journey from Jaigaon, tailored around your dates.</div><ul><li>Jaigaon / Phuentsholing start</li><li>Thimphu & Paro</li><li>Punakha / Dochula options</li><li>Hotel & vehicle choices</li><li>Travel assistance</li></ul><div class="package-actions"><a href="#quote" class="btn btn-primary">Plan Bhutan</a><a href="https://wa.me/919117740558?text=Hello%20Himalayan%20Gateway%2C%20I%20want%20to%20plan%20Bhutan." class="btn btn-outline" target="_blank" rel="noopener">WhatsApp</a></div></div>
+      </article>
 
-        <h3>🇧🇹 Bhutan Explorer</h3>
+      <article class="package">
+        <div class="package-image-wrap"><img class="package-image" src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=88" alt="Dooars forest escape" loading="lazy"></div>
+        <div class="package-content"><div class="package-kicker"><span class="package-destination">🌿 Dooars</span><span class="package-duration">2N / 3D</span></div><h3>Dooars Escape</h3><div class="price">Custom Quote</div><div class="sub">Forest stays, rivers and quiet mountain-edge villages for a refreshing getaway.</div><ul><li>Samsing & Suntaleykhola</li><li>Jhalong & Bindu</li><li>Rocky Island</li><li>Murti / Lataguri</li><li>Jaldapara / Gorumara</li></ul><div class="package-actions"><a href="#quote" class="btn btn-primary">Plan Dooars</a><a href="https://wa.me/919117740558?text=Hello%20Himalayan%20Gateway%2C%20I%20want%20to%20plan%20a%20Dooars%20trip." class="btn btn-outline" target="_blank" rel="noopener">WhatsApp</a></div></div>
+      </article>
 
-        <div class="price">Custom Quote</div>
+      <article class="package">
+        <div class="package-image-wrap"><img class="package-image" src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=88" alt="Sikkim Himalayan landscape" loading="lazy"></div>
+        <div class="package-content"><div class="package-kicker"><span class="package-destination">🏔️ Sikkim</span><span class="package-duration">4N / 5D</span></div><h3>Sikkim Escape</h3><div class="price">Custom Quote</div><div class="sub">Hills, lakes and Himalayan landscapes with a flexible route and local support.</div><ul><li>Gangtok</li><li>Pelling</li><li>Lachung options</li><li>Yumthang options</li><li>Hotel & vehicle choices</li></ul><div class="package-actions"><a href="#quote" class="btn btn-primary">Plan Sikkim</a><a href="https://wa.me/919117740558?text=Hello%20Himalayan%20Gateway%2C%20I%20want%20to%20plan%20a%20Sikkim%20trip." class="btn btn-outline" target="_blank" rel="noopener">WhatsApp</a></div></div>
+      </article>
 
-        <div class="sub">
-          Flexible Bhutan itinerary from Jaigaon.
-        </div>
+      <article class="package">
+        <div class="package-image-wrap"><img class="package-image" src="https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=1200&q=88" alt="Darjeeling hills" loading="lazy"></div>
+        <div class="package-content"><div class="package-kicker"><span class="package-destination">🌄 Darjeeling</span><span class="package-duration">3N / 4D</span></div><h3>Darjeeling Escape</h3><div class="price">Custom Quote</div><div class="sub">Classic Himalayan views, tea gardens and relaxed hill-town experiences.</div><ul><li>Tiger Hill</li><li>Tea gardens</li><li>Batasia Loop</li><li>Darjeeling town</li><li>Private vehicle options</li></ul><div class="package-actions"><a href="#quote" class="btn btn-primary">Plan Darjeeling</a><a href="https://wa.me/919117740558?text=Hello%20Himalayan%20Gateway%2C%20I%20want%20to%20plan%20Darjeeling." class="btn btn-outline" target="_blank" rel="noopener">WhatsApp</a></div></div>
+      </article>
 
-        <ul>
-          <li>Jaigaon / Phuentsholing start</li>
-          <li>Thimphu & Paro options</li>
-          <li>Punakha / Dochula options</li>
-          <li>Hotel categories</li>
-          <li>Vehicle options</li>
-          <li>Travel assistance</li>
-        </ul>
+      <article class="package">
+        <div class="package-image-wrap"><img class="package-image" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=88" alt="Offbeat forest retreat" loading="lazy"></div>
+        <div class="package-content"><div class="package-kicker"><span class="package-destination">🌲 North Bengal</span><span class="package-duration">Custom</span></div><h3>Offbeat North Bengal</h3><div class="price">Custom Quote</div><div class="sub">Quiet stays away from crowded routes, built around nature and slow travel.</div><ul><li>Kalimpong</li><li>Mirik</li><li>Samsing</li><li>Rocky Island</li><li>Raimatang</li></ul><div class="package-actions"><a href="#quote" class="btn btn-primary">Explore Offbeat</a><a href="https://wa.me/919117740558?text=Hello%20Himalayan%20Gateway%2C%20I%20want%20an%20offbeat%20North%20Bengal%20trip." class="btn btn-outline" target="_blank" rel="noopener">WhatsApp</a></div></div>
+      </article>
 
-        <a href="#quote" class="btn btn-primary">
-          Plan Bhutan
-        </a>
+      <article class="package">
+        <div class="package-image-wrap"><img class="package-image" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=88" alt="Himalayan mountain journey" loading="lazy"></div>
+        <div class="package-content"><div class="package-kicker"><span class="package-destination">✨ Multi-Destination</span><span class="package-duration">Fully Custom</span></div><h3>Signature Himalayan Journey</h3><div class="price">Fully Custom</div><div class="sub">Combine Bhutan, Dooars, Sikkim or Darjeeling into one seamless Himalayan holiday.</div><ul><li>Bhutan + Dooars</li><li>Bhutan + Sikkim</li><li>Darjeeling + Dooars</li><li>Family & group tours</li><li>Longer journeys</li></ul><div class="package-actions"><a href="#quote" class="btn btn-primary">Create My Trip</a><a href="https://wa.me/919117740558?text=Hello%20Himalayan%20Gateway%2C%20I%20want%20a%20custom%20multi-destination trip." class="btn btn-outline" target="_blank" rel="noopener">WhatsApp</a></div></div>
+      </article>
 
-      </div>
-
-      <div class="package">
-
-        <h3>🌿 Dooars Escape</h3>
-
-        <div class="price">Custom Quote</div>
-
-        <div class="sub">
-          Weekend or longer forest getaway.
-        </div>
-
-        <ul>
-          <li>Samsing & Suntaleykhola</li>
-          <li>Jhalong & Bindu</li>
-          <li>Rocky Island</li>
-          <li>Murti / Lataguri</li>
-          <li>Jaldapara / Gorumara</li>
-          <li>Local sightseeing</li>
-        </ul>
-
-        <a href="#quote" class="btn btn-primary">
-          Plan Dooars
-        </a>
-
-      </div>
-
-      <div class="package">
-
-        <h3>🏔️ Sikkim Escape</h3>
-
-        <div class="price">Custom Quote</div>
-
-        <div class="sub">
-          Hills, lakes and Himalayan landscapes.
-        </div>
-
-        <ul>
-          <li>Gangtok</li>
-          <li>Pelling</li>
-          <li>Lachung</li>
-          <li>Yumthang options</li>
-          <li>Hotel & vehicle options</li>
-          <li>Permit guidance</li>
-        </ul>
-
-        <a href="#quote" class="btn btn-primary">
-          Plan Sikkim
-        </a>
-
-      </div>
-
-      <div class="package">
-
-        <h3>🌄 Darjeeling Escape</h3>
-
-        <div class="price">Custom Quote</div>
-
-        <div class="sub">
-          Classic hills and tea gardens.
-        </div>
-
-        <ul>
-          <li>Tiger Hill</li>
-          <li>Tea gardens</li>
-          <li>Batasia Loop</li>
-          <li>Darjeeling town</li>
-          <li>Hotel options</li>
-          <li>Private vehicle options</li>
-        </ul>
-
-        <a href="#quote" class="btn btn-primary">
-          Plan Darjeeling
-        </a>
-
-      </div>
-
-      <div class="package">
-
-        <h3>🌲 Offbeat North Bengal</h3>
-
-        <div class="price">Custom Quote</div>
-
-        <div class="sub">
-          Quiet places away from crowded tourist routes.
-        </div>
-
-        <ul>
-          <li>Kalimpong</li>
-          <li>Mirik</li>
-          <li>Samsing</li>
-          <li>Rocky Island</li>
-          <li>Raimatang</li>
-          <li>Custom combinations</li>
-        </ul>
-
-        <a href="#quote" class="btn btn-primary">
-          Explore Offbeat
-        </a>
-
-      </div>
-
-      <div class="package">
-
-        <h3>✨ Multi-Destination</h3>
-
-        <div class="price">Fully Custom</div>
-
-        <div class="sub">
-          Combine Bhutan with North Bengal or Sikkim.
-        </div>
-
-        <ul>
-          <li>Bhutan + Dooars</li>
-          <li>Bhutan + Sikkim</li>
-          <li>Darjeeling + Dooars</li>
-          <li>Family tours</li>
-          <li>Group tours</li>
-          <li>Longer journeys</li>
-        </ul>
-
-        <a href="#quote" class="btn btn-primary">
-          Create My Trip
-        </a>
-
-      </div>
-
-      <!-- Admin-created active packages are inserted here after the built-in ideas. -->
       <div id="adminPackagesStatus" class="package-status" style="display:none"></div>
 
     </div>
@@ -2870,33 +2680,16 @@ function renderAdminPackage(pkg){
     <article class="package${featured ? " featured" : ""}">
       ${featured ? '<span class="package-badge">FEATURED</span>' : ""}
 
-      ${image ? `
-        <img
-          class="package-image"
-          src="${escapeHTML(image)}"
-          alt="${title}"
-          loading="lazy"
-          onerror="this.style.display='none'"
-        >
-      ` : ""}
+      ${image ? `<div class="package-image-wrap"><img class="package-image" src="${escapeHTML(image)}" alt="${title}" loading="lazy" onerror="this.closest('.package-image-wrap').style.display='none'"></div>` : ""}
 
-      <h3>${title}</h3>
+      <div class="package-content">
+        <div class="package-kicker"><span class="package-destination">${destination}</span>${duration ? `<span class="package-duration">⏱ ${duration}</span>` : ""}</div>
+        <h3>${title}</h3>
+        <div class="price">${price}</div>
+        <div class="sub">${description}</div>
+        <ul>${listHTML}</ul>
 
-      <div class="price">${price}</div>
-
-      <div class="sub">
-        ${description}
-      </div>
-
-      ${duration ? `
-        <div class="tag">⏱ ${duration}</div>
-      ` : ""}
-
-      <ul>
-        ${listHTML}
-      </ul>
-
-      <div class="package-actions">
+        <div class="package-actions">
         <a href="#quote" class="btn btn-primary">
           Enquire Now
         </a>
