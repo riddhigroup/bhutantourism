@@ -457,6 +457,74 @@ section{
   margin-top:5px;
 }
 
+
+
+/* ================= DOOARS EXPERIENCE ================= */
+.dooars-grid .place{
+  position:relative;
+  cursor:pointer;
+  overflow:hidden;
+  min-height:170px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  isolation:isolate;
+}
+.dooars-grid .place::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.78) 100%);
+  z-index:-1;
+}
+.dooars-grid .place::after{
+  content:"Explore →";
+  position:absolute;
+  right:16px;
+  top:15px;
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#fff;
+  opacity:.0;
+  transform:translateY(-5px);
+  transition:.25s;
+}
+.dooars-grid .place:hover::after{opacity:1;transform:none}
+.dooars-grid .place:hover{transform:translateY(-7px);border-color:rgba(216,179,106,.65);box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.dooars-grid .place-icon{font-size:31px;position:relative;z-index:1}
+.dooars-grid .place h3,.dooars-grid .place p{position:relative;z-index:1;margin-bottom:0}
+.dooars-grid .place p{max-width:90%}
+.dooars-grid .place[data-destination="Samsing"]{background:linear-gradient(135deg,rgba(24,77,52,.72),rgba(5,24,29,.94)),url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=900&q=80') center/cover}
+.dooars-grid .place[data-destination="Suntaleykhola"]{background:linear-gradient(135deg,rgba(20,74,57,.68),rgba(5,24,29,.94)),url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80') center/cover}
+.dooars-grid .place[data-destination="Rocky Island"]{background:linear-gradient(135deg,rgba(25,76,92,.65),rgba(5,24,29,.94)),url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=900&q=80') center/cover}
+.dooars-grid .place[data-destination="Jhalong"],.dooars-grid .place[data-destination="Bindu"]{background:linear-gradient(135deg,rgba(24,62,78,.65),rgba(5,24,29,.94)),url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80') center/cover}
+.dooars-grid .place[data-destination="Murti"]{background:linear-gradient(135deg,rgba(19,84,82,.65),rgba(5,24,29,.94)),url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=900&q=80') center/cover}
+.dooars-grid .place[data-destination="Jaldapara"],.dooars-grid .place[data-destination="Gorumara"],.dooars-grid .place[data-destination="Chilapata"]{background:linear-gradient(135deg,rgba(40,83,34,.66),rgba(5,24,29,.95)),url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80') center/cover}
+.dooars-grid .place[data-destination="Jayanti"],.dooars-grid .place[data-destination="Buxa"],.dooars-grid .place[data-destination="Raimatang"]{background:linear-gradient(135deg,rgba(32,66,48,.66),rgba(5,24,29,.95)),url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80') center/cover}
+.dooars-grid .place[data-destination="Rajabhatkhawa"],.dooars-grid .place[data-destination="Lataguri"],.dooars-grid .place[data-destination="Custom Dooars"]{background:linear-gradient(135deg,rgba(57,73,39,.65),rgba(5,24,29,.95)),url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80') center/cover}
+
+.dooars-cta{
+  margin-top:28px;padding:26px;border:1px solid rgba(216,179,106,.25);border-radius:22px;
+  background:linear-gradient(135deg,rgba(216,179,106,.08),rgba(255,255,255,.025));text-align:center
+}
+.dooars-cta h3{margin:0 0 7px;font-size:22px}.dooars-cta p{margin:0 0 17px;color:var(--muted)}
+
+/* Dooars modal */
+.dooars-modal{position:fixed;inset:0;background:rgba(2,8,12,.82);backdrop-filter:blur(9px);z-index:9999;display:none;overflow-y:auto;padding:28px 16px}
+.dooars-modal.show{display:flex;align-items:flex-start;justify-content:center}
+.dooars-modal-card{width:min(980px,100%);margin:auto;background:#081820;border:1px solid rgba(255,255,255,.12);border-radius:28px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.55);position:relative}
+.dooars-modal-close{position:absolute;right:18px;top:18px;width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:50%;background:rgba(0,0,0,.42);color:#fff;font-size:22px;cursor:pointer;z-index:3}
+.dooars-modal-hero{min-height:360px;padding:42px;display:flex;align-items:flex-end;position:relative;background-position:center;background-size:cover}
+.dooars-modal-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.82))}
+.dooars-modal-hero-content{position:relative;z-index:1;max-width:720px}.dooars-modal-kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#e5c982;margin-bottom:9px}
+.dooars-modal-hero h2{font-size:clamp(34px,6vw,62px);margin:0 0 8px;line-height:.98}.dooars-modal-hero p{font-size:16px;color:#d8e4e6;margin:0;max-width:680px;line-height:1.65}
+.dooars-modal-body{padding:32px}.dooars-story{font-size:17px;line-height:1.75;color:#d5e1e3;margin:0 0 24px}.dooars-modal-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+.dooars-box{border:1px solid rgba(255,255,255,.1);border-radius:19px;padding:22px;background:rgba(255,255,255,.025)}
+.dooars-box h4{margin:0 0 14px;font-size:16px}.dooars-tags{display:flex;flex-wrap:wrap;gap:8px}.dooars-tags span{padding:8px 11px;border-radius:999px;background:rgba(143,211,199,.09);border:1px solid rgba(143,211,199,.16);font-size:12px;color:#dceceb}
+.dooars-route{display:flex;flex-wrap:wrap;align-items:center;gap:8px;color:#dce7e8;font-size:13px}.dooars-route span{padding:8px 10px;border-radius:10px;background:rgba(216,179,106,.09);border:1px solid rgba(216,179,106,.18)}
+.dooars-modal-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}.dooars-modal-actions a,.dooars-modal-actions button{border:0;cursor:pointer}
+@media(max-width:760px){.dooars-grid{grid-template-columns:1fr}.dooars-modal{padding:10px}.dooars-modal-hero{min-height:330px;padding:26px}.dooars-modal-body{padding:22px}.dooars-modal-grid{grid-template-columns:1fr}}
+
 /* ================= PACKAGES ================= */
 
 .package-status{
@@ -1358,128 +1426,78 @@ footer{
 <!-- ================= DOOARS ================= -->
 
 <section id="dooars">
-
   <div class="container">
-
     <div class="section-head">
-
       <div>
-        <div class="kicker">North Bengal</div>
+        <div class="kicker">North Bengal • Slow Travel • Wild Nature</div>
         <h2>Discover the Dooars.</h2>
       </div>
-
       <p>
-        From riverside villages to forests and wildlife,
-        explore the Dooars beyond the usual tourist routes.
+        Forests, tea gardens, rivers and wildlife — choose your kind of Dooars
+        and discover what makes each corner worth the journey.
       </p>
-
     </div>
-
 
     <div class="dooars-grid">
-
-      <div class="place">
-        <div class="place-icon">🌿</div>
-        <h3>Samsing</h3>
-        <p>Tea gardens, forest roads and peaceful mountain scenery.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🏞️</div>
-        <h3>Suntaleykhola</h3>
-        <p>Quiet forest retreat surrounded by green hills.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🌊</div>
-        <h3>Rocky Island</h3>
-        <p>Riverside beauty and an excellent offbeat getaway.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">💧</div>
-        <h3>Jhalong</h3>
-        <p>River valley, forests and peaceful village surroundings.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🏔️</div>
-        <h3>Bindu</h3>
-        <p>Himalayan border village surrounded by dramatic scenery.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🌊</div>
-        <h3>Murti</h3>
-        <p>Riverfront stays and access to forest experiences.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🐘</div>
-        <h3>Jaldapara</h3>
-        <p>Wildlife, forest safaris and the famous one-horned rhino habitat.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🌳</div>
-        <h3>Gorumara</h3>
-        <p>Popular forest destination with wildlife and nature experiences.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🐅</div>
-        <h3>Chilapata</h3>
-        <p>Dense forests and adventurous wildlife surroundings.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🏕️</div>
-        <h3>Jayanti</h3>
-        <p>River, hills and one of the most scenic Buxa experiences.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🏞️</div>
-        <h3>Buxa</h3>
-        <p>Forests, hills, heritage trails and nature adventures.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🌲</div>
-        <h3>Raimatang</h3>
-        <p>Offbeat forest destination for travellers looking for quiet stays.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🏡</div>
-        <h3>Rajabhatkhawa</h3>
-        <p>Gateway area for Buxa and surrounding forest destinations.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🌅</div>
-        <h3>Lataguri</h3>
-        <p>Convenient base for exploring Gorumara and nearby forests.</p>
-      </div>
-
-      <div class="place">
-        <div class="place-icon">🗺️</div>
-        <h3>Custom Dooars</h3>
-        <p>Combine multiple villages, forests and stays into one trip.</p>
-      </div>
-
+      <div class="place" data-destination="Samsing" onclick="openDooarsExperience('Samsing')"><div class="place-icon">🌿</div><h3>Samsing</h3><p>Tea gardens, forest roads and quiet Himalayan scenery.</p></div>
+      <div class="place" data-destination="Suntaleykhola" onclick="openDooarsExperience('Suntaleykhola')"><div class="place-icon">🏞️</div><h3>Suntaleykhola</h3><p>Green forests, birds and a peaceful escape.</p></div>
+      <div class="place" data-destination="Rocky Island" onclick="openDooarsExperience('Rocky Island')"><div class="place-icon">🌊</div><h3>Rocky Island</h3><p>River, rocks and an offbeat riverside atmosphere.</p></div>
+      <div class="place" data-destination="Jhalong" onclick="openDooarsExperience('Jhalong')"><div class="place-icon">💧</div><h3>Jhalong</h3><p>Jaldhaka valley views, forest and peaceful village life.</p></div>
+      <div class="place" data-destination="Bindu" onclick="openDooarsExperience('Bindu')"><div class="place-icon">🏔️</div><h3>Bindu</h3><p>Borderland scenery, hills, river valleys and fresh mountain air.</p></div>
+      <div class="place" data-destination="Murti" onclick="openDooarsExperience('Murti')"><div class="place-icon">🌊</div><h3>Murti</h3><p>A beautiful riverside base for forests and wildlife.</p></div>
+      <div class="place" data-destination="Jaldapara" onclick="openDooarsExperience('Jaldapara')"><div class="place-icon">🦏</div><h3>Jaldapara</h3><p>Grasslands, forests and one of Dooars' iconic wildlife experiences.</p></div>
+      <div class="place" data-destination="Gorumara" onclick="openDooarsExperience('Gorumara')"><div class="place-icon">🐘</div><h3>Gorumara</h3><p>Jungle, rivers, birds and classic Dooars wildlife.</p></div>
+      <div class="place" data-destination="Chilapata" onclick="openDooarsExperience('Chilapata')"><div class="place-icon">🌳</div><h3>Chilapata</h3><p>Dense forest, history and a wilder side of Dooars.</p></div>
+      <div class="place" data-destination="Jayanti" onclick="openDooarsExperience('Jayanti')"><div class="place-icon">🏕️</div><h3>Jayanti</h3><p>River, hills and a dramatic gateway into the Buxa landscape.</p></div>
+      <div class="place" data-destination="Buxa" onclick="openDooarsExperience('Buxa')"><div class="place-icon">⛰️</div><h3>Buxa</h3><p>Forest trails, hills, heritage and adventure.</p></div>
+      <div class="place" data-destination="Raimatang" onclick="openDooarsExperience('Raimatang')"><div class="place-icon">🌲</div><h3>Raimatang</h3><p>Quiet forest country for travellers seeking an offbeat stay.</p></div>
+      <div class="place" data-destination="Rajabhatkhawa" onclick="openDooarsExperience('Rajabhatkhawa')"><div class="place-icon">🦋</div><h3>Rajabhatkhawa</h3><p>A natural gateway to Buxa and the eastern forests.</p></div>
+      <div class="place" data-destination="Lataguri" onclick="openDooarsExperience('Lataguri')"><div class="place-icon">🌴</div><h3>Lataguri</h3><p>A convenient base for Gorumara and nearby forest experiences.</p></div>
+      <div class="place" data-destination="Custom Dooars" onclick="openDooarsExperience('Custom Dooars')"><div class="place-icon">🗺️</div><h3>Custom Dooars</h3><p>Tell us your pace and we'll build the route around you.</p></div>
     </div>
 
-    <div style="text-align:center;margin-top:35px">
-      <a href="#quote" class="btn btn-primary">
-        Build My Dooars Trip
-      </a>
+    <div class="dooars-cta">
+      <h3>Not sure which part of Dooars is right for you?</h3>
+      <p>Tell us your travel style. We'll help you choose the forests, rivers and stays that fit.</p>
+      <a href="#quote" class="btn btn-primary" onclick="selectDestinationForQuote('Custom / Multiple Destinations')">🌿 Build My Dooars Trip</a>
     </div>
-
   </div>
-
 </section>
 
+<!-- ================= DOOARS EXPERIENCE MODAL ================= -->
+<div id="dooarsExperienceModal" class="dooars-modal" aria-hidden="true">
+  <div class="dooars-modal-card" role="dialog" aria-modal="true" aria-labelledby="dooarsModalTitle">
+    <button class="dooars-modal-close" onclick="closeDooarsExperience()" aria-label="Close">×</button>
+    <div id="dooarsModalHero" class="dooars-modal-hero">
+      <div class="dooars-modal-hero-content">
+        <div id="dooarsModalKicker" class="dooars-modal-kicker">EXPLORE DOOARS</div>
+        <h2 id="dooarsModalTitle">Dooars</h2>
+        <p id="dooarsModalSubtitle"></p>
+      </div>
+    </div>
+    <div class="dooars-modal-body">
+      <p id="dooarsModalStory" class="dooars-story"></p>
+      <div class="dooars-modal-grid">
+        <div class="dooars-box">
+          <h4>✨ What you can experience</h4>
+          <div id="dooarsModalExperiences" class="dooars-tags"></div>
+        </div>
+        <div class="dooars-box">
+          <h4>❤️ Best for</h4>
+          <div id="dooarsModalBestFor" class="dooars-tags"></div>
+        </div>
+        <div class="dooars-box" style="grid-column:1/-1">
+          <h4>🗺️ A route you could love</h4>
+          <div id="dooarsModalRoute" class="dooars-route"></div>
+        </div>
+      </div>
+      <div class="dooars-modal-actions">
+        <a id="dooarsQuoteButton" href="#quote" class="btn btn-primary" onclick="selectDestinationForQuote()">🌿 Plan This Dooars Trip</a>
+        <a class="btn btn-green" href="https://wa.me/919117740558?text=Hello%20Himalayan%20Gateway%2C%20I%20want%20to%20plan%20a%20Dooars%20trip." target="_blank" rel="noopener">💬 Ask on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ================= PACKAGES ================= -->
 
@@ -2747,6 +2765,59 @@ Source: Himalayan Gateway Website`;
 
 });
 
+
+
+
+/* ================= DOOARS EXPERIENCE DATA ================= */
+const DOOARS_EXPERIENCES = {
+  "Samsing": {subtitle:"Tea gardens, forest roads and the quiet side of Dooars.",story:"Samsing is for travellers who want to slow down. Think green tea gardens, forest edges, orange-growing country and a route that feels far removed from the rush of a city weekend.",experiences:["Tea garden views","Forest walks","Orange country","Suntaleykhola nearby","Slow mornings"],bestFor:["Couples","Families","Nature lovers","Photography","Offbeat travellers"],route:["Jaigaon / NJP","Samsing","Suntaleykhola","Rocky Island"],image:"https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1600&q=85"},
+  "Suntaleykhola": {subtitle:"A greener, quieter escape into the forest.",story:"Suntaleykhola feels like a place where the forest becomes the main attraction. It works beautifully as a slow-travel stop around Samsing, especially for guests who prefer greenery, birds and peaceful surroundings.",experiences:["Forest atmosphere","Bird watching","Nature walks","Samsing circuit","Quiet stay"],bestFor:["Nature lovers","Families","Couples","Birders","Slow travel"],route:["Samsing","Suntaleykhola","Rocky Island","Murti"],image:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=85"},
+  "Rocky Island": {subtitle:"River, rocks and a wonderfully offbeat Dooars mood.",story:"Rocky Island is made for travellers who enjoy simple riverside moments rather than crowded attractions. Pair it with Samsing and Suntaleykhola for a relaxed offbeat circuit.",experiences:["Riverside time","Photography","Picnic moments","Offbeat village roads","Forest surroundings"],bestFor:["Friends","Couples","Families","Photographers","Offbeat travellers"],route:["Samsing","Suntaleykhola","Rocky Island","Murti"],image:"https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1600&q=85"},
+  "Jhalong": {subtitle:"Jaldhaka valley views and peaceful mountain surroundings.",story:"Jhalong brings together river-valley scenery, forest and village life. It is a strong choice when you want Dooars to feel scenic and quiet rather than focused only on safari.",experiences:["Jaldhaka valley","Forest views","Village scenery","Photography","Slow travel"],bestFor:["Couples","Families","Nature lovers","Photography","Weekend trips"],route:["Jhalong","Bindu","Samsing","Murti"],image:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=85"},
+  "Bindu": {subtitle:"A dramatic borderland landscape at the edge of the hills.",story:"Bindu is one of those places where the journey is part of the experience. Hills, river valleys and fresh mountain air make it a natural companion to Jhalong and the eastern Dooars circuit.",experiences:["Mountain views","Jaldhaka valley","Scenic drive","Village life","Photography"],bestFor:["Couples","Families","Nature lovers","Photographers","Road trips"],route:["Jhalong","Bindu","Todey-Tangta","Samsing"],image:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=85"},
+  "Murti": {subtitle:"A riverside base where forest and water meet.",story:"Murti is a natural choice for travellers who want an easy Dooars base with the river close by and forest experiences within reach. It also pairs well with Gorumara and nearby destinations.",experiences:["Murti River","Forest stays","Wildlife circuits","Relaxed evenings","Photography"],bestFor:["Families","Couples","Friends","Nature lovers","First-time visitors"],route:["Lataguri","Murti","Gorumara","Chapramari"],image:"https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1600&q=85"},
+  "Jaldapara": {subtitle:"Grasslands, forests and iconic North Bengal wildlife.",story:"Jaldapara is the wildlife-focused side of Dooars, known for its grasslands and rich wildlife habitat. Build this into your itinerary when safari and wildlife encounters are high on your list.",experiences:["Jeep safari","Wildlife watching","Birding","Grassland landscapes","Forest drives"],bestFor:["Wildlife lovers","Families","Photographers","First-time Dooars visitors","Adventure seekers"],route:["Jaigaon","Jaldapara","Chilapata","Jayanti"],image:"https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=85"},
+  "Gorumara": {subtitle:"Classic Dooars forests, rivers and wildlife.",story:"Gorumara is one of the signature wildlife destinations of the Dooars. Its forest landscape and biodiversity make it a natural centrepiece for a classic Dooars itinerary.",experiences:["Jungle safari","Wildlife watching","Bird watching","Watchtower experiences","Forest drives"],bestFor:["Wildlife lovers","Families","Photographers","Nature lovers","Adventure seekers"],route:["Lataguri","Gorumara","Murti","Chapramari"],image:"https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=85"},
+  "Chilapata": {subtitle:"A deeper forest experience with history around the trail.",story:"Chilapata is for travellers who want a more forest-heavy route. Combine it with Jaldapara for a wildlife-and-forest circuit across eastern Dooars.",experiences:["Forest drive","Wildlife habitat","Historic Nalrajar Garh area","Photography","Nature exploration"],bestFor:["Nature lovers","History lovers","Wildlife travellers","Photographers","Adventure seekers"],route:["Jaldapara","Chilapata","Cooch Behar","Jaigaon"],image:"https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=85"},
+  "Jayanti": {subtitle:"A river, forested hills and the gateway to Buxa country.",story:"Jayanti is one of the most visually dramatic corners of eastern Dooars. The river and surrounding hills create a memorable setting and make it a strong companion to Buxa and Rajabhatkhawa.",experiences:["Jayanti River","Forest drives","Buxa circuit","Photography","Scenic viewpoints"],bestFor:["Couples","Families","Photographers","Nature lovers","Road trippers"],route:["Jaldapara","Rajabhatkhawa","Jayanti","Buxa"],image:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=85"},
+  "Buxa": {subtitle:"Forest trails, hills and stories hidden in the landscape.",story:"Buxa brings together forest, hills and heritage. It is the adventurous side of eastern Dooars and works especially well for travellers who want to explore beyond conventional sightseeing.",experiences:["Buxa Fort trail","Forest trekking","Bird watching","Hill landscapes","Wildlife country"],bestFor:["Adventure seekers","Trekkers","Nature lovers","Photographers","Friends"],route:["Rajabhatkhawa","Buxa","Jayanti","Lepchakha"],image:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=85"},
+  "Raimatang": {subtitle:"A quieter forest escape for travellers who like the road less taken.",story:"Raimatang is ideal when your idea of a holiday is fewer crowds, more forest and time to breathe. It can be used as an offbeat addition to an eastern Dooars circuit.",experiences:["Forest surroundings","Quiet stays","Scenic drives","Birding","Slow travel"],bestFor:["Couples","Families","Nature lovers","Offbeat travellers","Photography"],route:["Raimatang","Buxa","Rajabhatkhawa","Jayanti"],image:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=85"},
+  "Rajabhatkhawa": {subtitle:"A natural gateway into Buxa and the eastern forests.",story:"Rajabhatkhawa works beautifully as a gateway stop before exploring Buxa, Jayanti and the surrounding forest landscape. It is a practical and scenic part of an eastern Dooars circuit.",experiences:["Forest gateway","Nature interpretation","Birding","Buxa access","Scenic drives"],bestFor:["Families","Nature lovers","Wildlife travellers","Photographers","Road trips"],route:["Jaldapara","Rajabhatkhawa","Buxa","Jayanti"],image:"https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=85"},
+  "Lataguri": {subtitle:"An easy base for Gorumara and the western Dooars circuit.",story:"Lataguri is a convenient starting point for exploring Gorumara and the forest destinations around it. It works well for a first Dooars trip when you want easy access to wildlife experiences.",experiences:["Gorumara access","Safari circuit","Forest stays","Murti nearby","Local sightseeing"],bestFor:["First-time visitors","Families","Wildlife lovers","Groups","Weekend trips"],route:["Lataguri","Gorumara","Murti","Chapramari"],image:"https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=85"},
+  "Custom Dooars": {subtitle:"Your Dooars, your pace — we'll build the route around you.",story:"Not every traveller wants the same Dooars. Tell us whether you want wildlife, riverside stays, tea gardens, quiet villages, photography or a little bit of everything — and we'll shape the route accordingly.",experiences:["Wildlife","Tea gardens","Rivers","Forest stays","Offbeat villages","Custom routing"],bestFor:["Families","Couples","Friends","Groups","First-time visitors"],route:["Tell us your start point","Choose your experiences","We plan the circuit","You enjoy Dooars"],image:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=85"}
+};
+
+let currentDooarsDestination = "Custom Dooars";
+function openDooarsExperience(name){
+  const d=DOOARS_EXPERIENCES[name] || DOOARS_EXPERIENCES["Custom Dooars"];
+  currentDooarsDestination=name;
+  document.getElementById('dooarsModalTitle').textContent=name;
+  document.getElementById('dooarsModalSubtitle').textContent=d.subtitle;
+  document.getElementById('dooarsModalStory').textContent=d.story;
+  document.getElementById('dooarsModalHero').style.backgroundImage=`url("${d.image}")`;
+  document.getElementById('dooarsModalExperiences').innerHTML=d.experiences.map(x=>`<span>${x}</span>`).join('');
+  document.getElementById('dooarsModalBestFor').innerHTML=d.bestFor.map(x=>`<span>${x}</span>`).join('');
+  document.getElementById('dooarsModalRoute').innerHTML=d.route.map((x,i)=>`<span>${x}</span>${i<d.route.length-1?'<b>→</b>':''}`).join('');
+  const m=document.getElementById('dooarsExperienceModal');
+  m.classList.add('show');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+}
+function closeDooarsExperience(){const m=document.getElementById('dooarsExperienceModal');m.classList.remove('show');m.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+function selectDestinationForQuote(destination){
+  const value=destination || currentDooarsDestination;
+  closeDooarsExperience();
+  setTimeout(()=>{
+    const select=document.getElementById('destination');
+    if(select){
+      const wanted=value==='Custom Dooars'?'Custom / Multiple Destinations':value;
+      const exists=[...select.options].some(o=>o.value===wanted||o.textContent===wanted);
+      if(exists) select.value=wanted;
+    }
+    const quote=document.getElementById('quote');
+    if(quote) quote.scrollIntoView({behavior:'smooth',block:'start'});
+  },80);
+}
+document.addEventListener('click',e=>{const m=document.getElementById('dooarsExperienceModal');if(m&&e.target===m)closeDooarsExperience();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDooarsExperience();});
 
 /* ================= PUBLIC PACKAGE LOAD ================= */
 
