@@ -643,6 +643,16 @@ Login to Dashboard
 
 </button>
 
+<button
+class="btn"
+type="button"
+style="width:100%;margin-top:10px"
+onclick="forgotPassword()">
+
+Forgot Password?
+
+</button>
+
 <div id="loginError" class="login-error"></div>
 
 <div class="small" style="margin-top:18px">
@@ -1788,6 +1798,56 @@ async function login(){
   }
 
 }
+
+async function forgotPassword(){
+
+  const email =
+    document.getElementById('loginUser').value.trim();
+
+  const errorBox =
+    document.getElementById('loginError');
+
+  errorBox.textContent = '';
+
+  if(!email){
+
+    errorBox.textContent =
+      'Please enter your admin email first.';
+
+    return;
+
+  }
+
+  try{
+
+    const {error} =
+      await supabaseClient.auth.resetPasswordForEmail(
+        email,
+        {
+          redirectTo:
+            'https://riddhigroup.github.io/bhutantourism/reset-password.html'
+        }
+      );
+
+    if(error) throw error;
+
+    errorBox.style.color = '#5cff91';
+    errorBox.textContent =
+      'Password reset email sent. Please check your inbox.';
+
+  }catch(error){
+
+    console.error('Password reset error:', error);
+
+    errorBox.style.color = '#ff8b8b';
+    errorBox.textContent =
+      error.message ||
+      'Could not send password reset email.';
+
+  }
+
+}
+
 
 function showAdminApp(){
 
